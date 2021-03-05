@@ -1,0 +1,26 @@
+{
+  "name": "webtech-course-project",
+  "version": "1.0.0",
+  "description": "A team course project in Web Technologies.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ajku1/webtech-course-project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ajku1/webtech-course-project/issues"
+  },
+  "homepage": "https://github.com/Ajku1/webtech-course-project#readme",
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "nodemon": "^2.0.7"
+  }
+}
