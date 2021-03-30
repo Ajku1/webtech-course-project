@@ -4,8 +4,12 @@
   "description": "A team course project in Web Technologies.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "eslint . --ext .ts",
+    "e2e": "ng e2e"
   },
   "repository": {
     "type": "git",
@@ -17,10 +21,37 @@
     "url": "https://github.com/Ajku1/webtech-course-project/issues"
   },
   "homepage": "https://github.com/Ajku1/webtech-course-project#readme",
+  "dependencies": {
+    "@angular/animations": "~11.2.7",
+    "@angular/common": "~11.2.7",
+    "@angular/compiler": "~11.2.7",
+    "@angular/core": "~11.2.7",
+    "@angular/forms": "~11.2.7",
+    "@angular/platform-browser": "~11.2.7",
+    "@angular/platform-browser-dynamic": "~11.2.7",
+    "@angular/router": "~11.2.7",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.3"
+  },
   "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1102.6",
+    "@angular/cli": "~11.2.6",
+    "@angular/compiler-cli": "~11.2.7",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^12.11.1",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~6.1.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "typescript": "~4.1.5",
     "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
-    "nodemon": "^2.0.7"
+    "eslint-plugin-import": "^2.22.1"
   }
 }
