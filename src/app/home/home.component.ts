@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Route } from "../route.enum";
 
 @Component({
-    selector: 'app-home',
+    selector: 'chat-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })

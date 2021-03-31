@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { LoginFormControlName } from "./models/login-form-control-name.enum";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'chat-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+    submitButtonText: string = 'Login';
 
-  constructor() { }
+    readonly loginFormControlNames: typeof LoginFormControlName = LoginFormControlName;
+    readonly loginForm: FormGroup;
 
-  ngOnInit(): void {
-  }
+    constructor(formBuilder: FormBuilder) {
+        this.loginForm = formBuilder.group({
+            [LoginFormControlName.Email]: ['', Validators.required],
+            [LoginFormControlName.Password]: ['', Validators.required]
+        });
+    }
 
+    onFormSubmit(): void {
+        alert('Form is valid');
+    }
 }
