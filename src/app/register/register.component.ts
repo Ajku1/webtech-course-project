@@ -21,6 +21,6 @@ export class RegisterComponent {
     }
 
     onFormSubmit(): void {
-        alert('Form is valid');
+        alert('Form is valid. Implement register logic here...');
     }
 }

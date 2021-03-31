@@ -21,6 +21,6 @@ export class LoginComponent {
     }
 
     onFormSubmit(): void {
-        alert('Form is valid');
+        alert('Form is valid. Implement login logic here...');
     }
 }
