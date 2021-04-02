@@ -1,0 +1,164 @@
+:host {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+  /*modal style*/
+.wrap-modal { 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  /*display: flex;*/
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+input { 
+  width: 100%;
+  border: 2px solid rgb(65 129 218);
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+  
+button.next-btn,
+button.prev-btn,
+button.create-btn,
+button.add-member-btn {
+  float: right;
+  padding: 8px 30px;
+  border: none;
+  background-color: rgb(17 67 115);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+}
+    
+button.prev-btn {
+  float: left;
+}
+  
+.modal-footer {
+  margin-top: 50px;
+}
+   
+.modal-header {
+  margin-top: 30px;
+}
+  
+.modal-body {
+  margin-top: 20px;
+}
+  
+  /*add member content style*/
+li { 
+  display: inline-block;
+  padding: 3px;
+  color: #6d7390;
+  border: 2px solid rgb(65 129 218);
+  border-radius: 5px;
+  margin-bottom: 8px;
+  margin-right: 5px;
+  background-color: #f8f8f8;
+  font-size: 14px;
+}
+    
+li:hover { 
+  background: #f3f3f3;
+}
+    
+.delete-member-btn { 
+  background: none;
+  border: none;
+  color: rgb(17 67 115);
+  font-weight: 800;
+  margin-left: 3px;
+}
+   
+.empty-area { 
+  width: 100%;
+  height: 100px;
+  overflow-y: scroll;
+}
+  
+.adding-section {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  margin-bottom: 8px;
+}
+  
+#member-name {
+  margin-right: 5px;
+}
+  
+  /*chatroom description style*/
+textarea {
+  padding: 8px 8px;
+  box-sizing: border-box;
+  border: 2px solid rgb(65 129 218);
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  width: 100%;
+  height: 100%;
+}
+  
+::placeholder {
+  font-size: 18px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+    
+/*steps titles style*/
+.modal-title { 
+  font-size: 35px;
+  color: rgb(18 84 148);
+  font-weight: bold;
+}
+  
+.step-title { 
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(18 84 148);
+  margin-bottom: 10px;
+}
+  
+.modal-description { 
+  font-size: 16px;
+  font-weight: 600;
+  color: #b8b3d2;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+  
+label {
+  color: rgb(17 67 115);
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+  
+.modal-header {
+  flex-flow: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
