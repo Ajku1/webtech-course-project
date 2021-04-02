@@ -21,22 +21,20 @@ export class CreateChatroomModalComponent implements OnInit {
     this.step = this.step - 1;
   }
 
+  
+searchText = '';
+members = [
+  { name: 'Member1' },
+  { name: 'Member2' },
+  { name: 'Member3' },
+  { name: 'Member4' },
+  { name: 'Member5' },
+  { name: 'Member6' },
+  { name: 'Member7' },
+  { name: 'Member8' },
+];
 
-  members: any = [];
-  newMember : string = '';
-    
-  addMember() {
-    if (this.newMember == '') {
-    }
-    else {
-      this.members.push(this.newMember);
-      this.newMember = '';
-    }
-  }
 
-  deleteMember(index : any) {
-    this.members.splice(index, 1);
-  }
 
 }
 

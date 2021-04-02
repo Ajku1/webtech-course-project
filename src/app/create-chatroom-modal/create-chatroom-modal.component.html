@@ -20,13 +20,12 @@
         <div class="modal-body">
           <label for="member-name">Add members to your room:</label>
           <div class="adding-section">
-            <input [(ngModel)]="newMember" type="text" id="member-name" name="member-name" placeholder="Enter member name...">
-            <button (click)="addMember()" type='button' class="add-member-btn">Add</button> 
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search members...">
           </div>
 		      <div class="empty-area">
-			      <div *ngFor="let x of members; let index = index;" class="list-members">
+			      <div *ngFor="let member of members |filter:searchText;" class="list-members">
 				      <ul>
-                <li>{{x}}<button (click)="deleteMember(index)" type='button' class="delete-member-btn">X</button></li>                          
+                <li>{{member.name}}<button type='button' class="add-member-btn">Add</button></li>                          
               </ul>
             </div>
 		      </div>

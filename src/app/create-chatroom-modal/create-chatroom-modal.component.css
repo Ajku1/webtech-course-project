@@ -39,8 +39,7 @@ input {
   
 button.next-btn,
 button.prev-btn,
-button.create-btn,
-button.add-member-btn {
+button.create-btn {
   float: right;
   padding: 8px 30px;
   border: none;
@@ -69,33 +68,31 @@ button.prev-btn {
   
   /*add member content style*/
 li { 
-  display: inline-block;
   padding: 3px;
   color: #6d7390;
-  border: 2px solid rgb(65 129 218);
-  border-radius: 5px;
-  margin-bottom: 8px;
-  margin-right: 5px;
+  border: 1px;
   background-color: #f8f8f8;
   font-size: 14px;
+  margin-bottom: 2px;
 }
     
 li:hover { 
   background: #f3f3f3;
 }
     
-.delete-member-btn { 
+.add-member-btn { 
   background: none;
   border: none;
   color: rgb(17 67 115);
   font-weight: 800;
-  margin-left: 3px;
+  float: right;
 }
    
 .empty-area { 
   width: 100%;
   height: 100px;
   overflow-y: scroll;
+  border: 2px solid rgb(65 129 218);
 }
   
 .adding-section {
