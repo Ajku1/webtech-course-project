@@ -1,50 +1,48 @@
 <div class="wrap-modal">
   <form>
     <div *ngIf="step == 1">
-      <div class="modal-header">
+      <section class="modal-header">
         <h2 class="modal-title">Create Chatroom</h2>
         <h3 class="modal-description">Create chatroom in 3 easy steps</h3>
         <h2 class="step-title">Step 1</h2>
-        <img src="assets/images/logo.jpg" alt="Instant messanger logo" width="160" height="120">
-      </div>
-      <div class="modal-body">
+        <img src="assets/images/logo.jpg" alt="Instant messanger logo" class="logo-img">
+      </section>
+      <section class="modal-body">
         <label for="room-name">Choose right name for your room:</label>
         <input type="text" id="room-name" name="room-name" placeholder="Enter room name...">
-      </div>
+      </section>
     </div>
       <div *ngIf="step == 2">
-        <div class="modal-header">
+        <section class="modal-header">
           <h2 class="step-title">Step 2</h2> 
-          <img src="./assets/images/participants.png" alt="Chatroom participants" width="130" height="80">
-        </div>   
-        <div class="modal-body">
-          <label for="member-name">Add members to your room:</label>
-          <div class="adding-section">
-            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search members...">
-          </div>
+          <img src="./assets/images/participants.png" alt="Chatroom participants" class="add-members-img">
+        </section>   
+        <section class="modal-body">
+          <label for="member-name">Add members to your room:</label>         
+          <input class="adding-section" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search members...">         
 		      <div class="empty-area">
 			      <div *ngFor="let member of members |filter:searchText;" class="list-members">
 				      <ul>
-                <li>{{member.name}}<button type='button' class="add-member-btn">Add</button></li>                          
+                <li>{{member.name}}<button type='button' class="add-member-btn">+</button></li>                          
               </ul>
             </div>
 		      </div>
-        </div>
+        </section>
     </div>
     <div *ngIf="step == 3">
-        <div class="modal-header">
+        <section class="modal-header">
           <h2 class="step-title">Step 3</h2>
-          <img src="./assets/images/description.jpg" alt="Chatroom description" width="100" height="100">
-        </div>
-        <div class="modal-body">
+          <img src="./assets/images/description.jpg" alt="Chatroom description" class="add-description-img">
+        </section>
+        <section class="modal-body">
           <label for="description">Add description to your room:</label> 
-          <textarea id="description" name="description" rows="6" cols="50" placeholder="Enter room description..."></textarea>
-        </div>
+          <textarea id="description" name="description"  placeholder="Enter room description..."></textarea>
+        </section>
     </div>
-    <div class="modal-footer">
+    <section class="modal-footer">
       <button type="button" class="prev-btn" *ngIf="step != 1" (click)="previous()">Prev</button>
       <button type="button" class="next-btn" *ngIf="step != 3" (click)="submit()">Next</button>
       <button type="button" class="create-btn" *ngIf="step == 3">Create</button>
-    </div>    
+    </section>    
   </form>      
 </div>

@@ -1,6 +1,4 @@
 :host {
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +63,22 @@ button.prev-btn {
 .modal-body {
   margin-top: 20px;
 }
-  
+ 
+.logo-img {
+  width: 160px;
+  height: 120px;
+}
+
+.add-members-img {
+  width: 130px;
+  height: 80px;
+}
+
+.add-description-img {
+  width: 100px;
+  height: 100px;
+}
+
   /*add member content style*/
 li { 
   padding: 3px;
@@ -81,16 +94,20 @@ li:hover {
 }
     
 .add-member-btn { 
-  background: none;
-  border: none;
-  color: rgb(17 67 115);
-  font-weight: 800;
   float: right;
+  padding: 1px 5px;
+  border: none;
+  background-color: rgb(156 160 179);
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
 }
    
 .empty-area { 
   width: 100%;
-  height: 100px;
+  height: 130px;
   overflow-y: scroll;
   border: 2px solid rgb(65 129 218);
 }
@@ -115,7 +132,7 @@ textarea {
   background-color: #f8f8f8;
   resize: none;
   width: 100%;
-  height: 100%;
+  height: 130px;
 }
   
 ::placeholder {
