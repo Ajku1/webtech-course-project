@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class CreateChatroomModalComponent implements OnInit {
-  step: any = 1;
+  step: number = 1;
   constructor() { }
 
   ngOnInit(): void {
