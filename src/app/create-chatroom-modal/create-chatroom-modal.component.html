@@ -8,7 +8,7 @@
         <img src="assets/images/logo.jpg" alt="Instant messanger logo" class="logo-img">
       </section>
       <section class="modal-body">
-        <label for="room-name">Choose right name for your room:</label>
+        <label class="step-input-description" for="room-name">Choose right name for your room:</label>
         <input type="text" id="room-name" name="room-name" placeholder="Enter room name...">
       </section>
     </div>
@@ -18,12 +18,12 @@
           <img src="./assets/images/participants.png" alt="Chatroom participants" class="add-members-img">
         </section>   
         <section class="modal-body">
-          <label for="member-name">Add members to your room:</label>         
+          <label class="step-input-description" for="member-name">Add members to your room:</label>         
           <input class="adding-section" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search members...">         
 		      <div class="empty-area">
 			      <div *ngFor="let member of members |filter:searchText;" class="list-members">
 				      <ul>
-                <li>{{member.name}}<button type='button' class="add-member-btn">+</button></li>                          
+                <li class="username">{{member.name}}<button type='button' class="add-member-btn">+</button></li>                          
               </ul>
             </div>
 		      </div>
@@ -35,14 +35,41 @@
           <img src="./assets/images/description.jpg" alt="Chatroom description" class="add-description-img">
         </section>
         <section class="modal-body">
-          <label for="description">Add description to your room:</label> 
+          <label class="step-input-description" for="description">Add description to your room:</label> 
           <textarea id="description" name="description"  placeholder="Enter room description..."></textarea>
         </section>
     </div>
+    <div *ngIf="step == 4">
+      <section class="modal-header">
+        <h2 class="modal-title">Chatroom Info</h2>
+      </section>
+      <section class="modal-body">
+        <div class="info-part" id="base-info-inline">
+         <label class="info-description" for="room-info">Room owner:</label> 
+         <label class="info-data" for="room-info">Username</label>
+        </div> 
+        <div class="info-part" id="base-info-inline">
+         <label class="info-description" for="room-info">Room name:</label> 
+         <label class="info-data" for="room-info">Roomname</label>
+        </div>
+        <div class="info-part">
+         <label class="info-description" for="room-info">Members:</label> 
+         <ul class="members-inline">
+          <li class="info-data">Member1</li>  
+          <li class="info-data">Member2</li>  
+          <li class="info-data">Member3</li>                          
+         </ul>
+        </div>
+        <div class="info-part">
+         <label class="info-description" for="room-info">Description:</label>
+         <label class="info-data" for="room-info">Description...</label> 
+        </div>
+      </section>
+  </div>
     <section class="modal-footer">
       <button type="button" class="prev-btn" *ngIf="step != 1" (click)="previous()">Prev</button>
-      <button type="button" class="next-btn" *ngIf="step != 3" (click)="submit()">Next</button>
-      <button type="button" class="create-btn" *ngIf="step == 3">Create</button>
+      <button type="button" class="next-btn" *ngIf="step != 4" (click)="submit()">Next</button>
+      <button type="button" class="create-btn" *ngIf="step == 4">Create</button>
     </section>    
   </form>      
 </div>

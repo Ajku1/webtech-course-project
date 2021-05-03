@@ -1,7 +1,4 @@
 html, body, chat-root {
-    height: 99vh;
-    width: 99vw;
-    /*background-color: rgb(200 205 224);*/
-    background-color: rgb(194 220 245);
     font-family: 'Open Sans Condensed', sans-serif;
+    background: rgb(182 207 243);
 }
