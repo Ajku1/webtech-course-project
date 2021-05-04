@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+<<<<<<< HEAD
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -31,3 +32,21 @@ import { CreateChatroomModalComponent } from './create-chatroom-modal/create-cha
   })
 
 export class AppModule { }
+=======
+import { ChatroomComponent } from './chatroom/chatroom.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    ChatroomComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule {
+}
+>>>>>>> fdd2960... Bug fix.
