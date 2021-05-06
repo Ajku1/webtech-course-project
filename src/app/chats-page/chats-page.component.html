@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chats</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="chats-page.component.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- 
+    <style type="text/css"
+
+    </style> -->
+  </head>
+
+  <body id="body">
+    <div class="container">
+      <!-- header -->
+      <div class="jumbotron">
+        <h1 id="chatsHeader">Chats</h1>
+      </div>
+
+      <!-- log out button  -->
+      <div>
+        <button (click)="onLogout()" id="logout">Log out</button>
+      </div>
+
+      <!-- search -->
+      <div>
+        <!-- <textarea id="search" placeholder="search" rows="1"  overflow: hidden>
+
+        </textarea> -->
+        <textarea id="search" placeholder="search" rows="1"></textarea>
+      </div>
+
+      <!-- choose chat room menu -->
+      <div class="vertical-menu">
+        <a href="#">Chat 1</a>
+        <a href="#">Chat 2</a>
+        <a href="#">Chat 3</a>
+        <a href="#">Chat 4</a>
+        <a href="#">Chat 5</a>
+        <a href="#">Chat 6</a>
+        <a href="#">Chat 7</a>
+        <a href="#">Chat 8</a>
+        <a href="#">Chat 9</a>
+        <a href="#">Chat 10</a>
+      </div>
+
+      <!-- Create chat room button -->
+      <div>
+        <button id="addChat">Create</button>
+      </div>
+
+    </div>
+  </body>
+</html>
