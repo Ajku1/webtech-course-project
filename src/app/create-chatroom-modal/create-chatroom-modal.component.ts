@@ -21,7 +21,6 @@ export class CreateChatroomModalComponent implements OnInit {
     this.step = this.step - 1;
   }
 
-  
 searchText = '';
 members = [
   { name: 'Member1' },
@@ -33,11 +32,4 @@ members = [
   { name: 'Member7' },
   { name: 'Member8' },
 ];
-
-
-
 }
-
-
-
-
