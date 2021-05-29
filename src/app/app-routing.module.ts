@@ -25,7 +25,7 @@ const routes: Routes = [
         component: HomeComponent
     },
     { 
-        path: 'app-chats-page', 
+        path: Route.ChatsPageComponent, 
         component: ChatsPageComponent
     },
     {

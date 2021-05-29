@@ -15,4 +15,8 @@ export class ChatsPageComponent {
     onLogout() {
         this.router.navigate(['home']);
     }
+
+    onChat() {
+        // this.router.navigate(['app-chatroom']);
+    }
 }
