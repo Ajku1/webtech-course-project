@@ -18,7 +18,7 @@ export class ChatsPageComponent {
     }
 
     onChat() {
-        this.router.navigate(['home']);
+        this.router.navigate([Route.Chatroom]);
     }
 
     onCreate() {

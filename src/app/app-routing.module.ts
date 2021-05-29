@@ -21,10 +21,6 @@ const routes: Routes = [
         path: Route.Register,
         component: RegisterComponent
     },
-    {
-        path: '**',
-        component: ChatsPageComponent
-    },
     { 
         path: Route.ChatsPage, 
         component: ChatsPageComponent
@@ -36,7 +32,11 @@ const routes: Routes = [
     {
       path: Route.Chatroom,
       component: ChatroomComponent
-    }
+    },
+    {
+        path: '**',
+        component: ChatsPageComponent
+    },
 ];
 
 @NgModule({
