@@ -1,0 +1,206 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+  /*modal style*/
+.wrap-modal { 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  justify-content: center;
+  align-items: center;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 5px 10px 18px rgb(84 110 134);
+}
+
+input { 
+  width: 100%;
+  border: 2px solid rgb(65 129 218);
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
+  
+button.next-btn,
+button.prev-btn,
+button.create-btn {
+  float: right;
+  padding: 8px 30px;
+  border: none;
+  background-color: rgb(17 67 115);
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  color: white;
+}
+    
+button.prev-btn {
+  float: left;
+}
+  
+.modal-header {
+  margin-top: 30px;
+  flex-flow: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
+  margin-top: 20px;
+}
+.modal-footer {
+  margin-top: 50px;
+}
+ 
+.logo-img {
+  width: 160px;
+  height: 120px;
+}
+
+.add-members-img {
+  width: 130px;
+  height: 80px;
+}
+
+.add-description-img {
+  width: 100px;
+  height: 100px;
+}
+
+  /*add member content style*/
+.username { 
+  padding: 6px;
+  color: #6d7390;
+  border: 1px;
+  background: linear-gradient(178deg, rgb(248 248 248) 0%, rgb(222 222 236) 100%);
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+    
+ul {
+  list-style-type: none;
+}
+
+.username:hover { 
+  background: #f3f3f3;
+}
+    
+.add-member-btn { 
+  float: right;
+  padding: 1px 5px;
+  border: none;
+  background: linear-gradient(178deg, rgb(17 67 115) 0%, rgb(65 129 218) 100%);
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+}
+   
+.empty-area { 
+  width: 100%;
+  height: 130px;
+  overflow-y: scroll;
+  border: 2px solid rgb(65 129 218);
+}
+  
+.adding-section {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  margin-bottom: 8px;
+}
+  
+#member-name {
+  margin-right: 5px;
+}
+  
+  /*chatroom description style*/
+textarea {
+  padding: 8px 8px;
+  box-sizing: border-box;
+  border: 2px solid rgb(65 129 218);
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+  width: 100%;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+  
+::placeholder {
+  font-size: 18px;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+    
+/*steps titles style*/
+.modal-title { 
+  font-size: 35px;
+  color: rgb(18 84 148);
+  font-weight: bold;
+}
+  
+.step-title { 
+  font-size: 20px;
+  font-weight: 600;
+  color: rgb(18 84 148);
+  margin-bottom: 10px;
+}
+  
+.modal-description { 
+  font-size: 16px;
+  font-weight: 600;
+  color: #b8b3d2;
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+  
+.step-input-description {
+  color: rgb(17 67 115);
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+  
+#base-info-inline{
+ display: flex;
+ flex-flow: row wrap;
+ align-items: center;
+}
+
+.info-description {
+  color: rgb(17 67 115);
+  font-weight: 600;
+  margin-right: 5px;
+}
+
+.info-part {
+  margin-top: 15px;
+}
+
+.info-data {
+  color: #4a7eb1;
+}
+
+li {
+  margin-top: 3px;
+}
