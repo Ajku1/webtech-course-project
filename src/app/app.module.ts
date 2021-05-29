@@ -9,6 +9,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {ChatsPageComponent} from './chats-page/chats-page.component';
 import {CreateChatroomModalComponent} from './create-chatroom-modal/create-chatroom-modal.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import {CreateChatroomModalComponent} from './create-chatroom-modal/create-chatr
         RegisterComponent,
         LoginComponent,
         ChatsPageComponent,
-        CreateChatroomModalComponent
+        CreateChatroomModalComponent,
+        ChatroomComponent
     ],
     imports: [
         BrowserModule,

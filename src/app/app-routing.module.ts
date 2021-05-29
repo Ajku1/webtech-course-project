@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { CreateChatroomModalComponent } from './create-chatroom-modal/create-chatroom-modal.component';
 import { Route } from "./route.enum";
 import { ChatsPageComponent } from './chats-page/chats-page.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
 
 const routes: Routes = [
     {
@@ -22,15 +23,19 @@ const routes: Routes = [
     },
     {
         path: '**',
-        component: HomeComponent
+        component: ChatsPageComponent
     },
     { 
-        path: Route.ChatsPageComponent, 
+        path: Route.ChatsPage, 
         component: ChatsPageComponent
     },
     {
       path: Route.CreateChatroomModal,
       component: CreateChatroomModalComponent
+    },
+    {
+      path: Route.Chatroom,
+      component: ChatroomComponent
     }
 ];
 

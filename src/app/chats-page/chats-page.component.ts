@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
+import { Route } from "../route.enum";
 
 
 @Component({
@@ -13,10 +14,14 @@ export class ChatsPageComponent {
     }
     
     onLogout() {
-        this.router.navigate(['home']);
+        this.router.navigate([Route.Home]);
     }
 
     onChat() {
-        // this.router.navigate(['app-chatroom']);
+        this.router.navigate(['home']);
+    }
+
+    onCreate() {
+        this.router.navigate([Route.CreateChatroomModal]);
     }
 }
