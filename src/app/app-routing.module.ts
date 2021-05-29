@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { CreateChatroomModalComponent } from './create-chatroom-modal/create-chatroom-modal.component';
 import { Route } from "./route.enum";
+import { ChatsPageComponent } from './chats-page/chats-page.component';
 
 const routes: Routes = [
     {
@@ -21,6 +23,14 @@ const routes: Routes = [
     {
         path: '**',
         component: HomeComponent
+    },
+    { 
+        path: 'app-chats-page', 
+        component: ChatsPageComponent
+    },
+    {
+      path: Route.CreateChatroomModal,
+      component: CreateChatroomModalComponent
     }
 ];
 
@@ -28,5 +38,5 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule {
-}
+
+export class AppRoutingModule {}
