@@ -1,14 +1,24 @@
-const http = require("http");
+import http from "http";
+import express from "express";
 
-const host = 'localhost';
-const port = 8000;
+import cors from "cors";
 
-const requestListener = function (req, res) {
-    res.write('Hello World!');
-    res.end();
-};
+const app = express();
 
-const server = http.createServer(requestListener);
-server.listen(port, host, () => {
-    console.log(`Server is running on http://${host}:${port}`);
+const port =  "8000";
+app.set("port", port);
+
+app.use('*', (req, res) => {
+  return res.status(404).json({
+    success: false,
+    message: 'API endpoint doesnt exist'
+  })
+});
+
+const server = http.createServer(app);
+
+server.listen(port);
+
+server.on("listening", () => {
+  console.log(`Listening on port:: http://localhost:${port}/`)
 });

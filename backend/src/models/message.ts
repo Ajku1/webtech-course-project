@@ -2,16 +2,16 @@ import * as mongoose from 'mongoose';
 
 const messageSchema = new mongoose.Schema({
     sender: {
-        type: String
+        type: String,
+        required: true
     },
-    text: {
-        type: String
+    message: {
+        type: String,
+        required: true
     },
     date: {
-        type: String
-    }, 
-    time: {
-        type: String
+        type: Date,
+        default: Date.now
     }
 });
 
