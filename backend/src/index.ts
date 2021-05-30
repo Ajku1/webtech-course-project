@@ -3,6 +3,11 @@ import express from "express";
 
 import cors from "cors";
 
+// mongo connection
+import "./config/mongo.ts";
+// routes
+import indexRouter from "./routes/index";
+
 const app = express();
 
 const port =  "8000";
