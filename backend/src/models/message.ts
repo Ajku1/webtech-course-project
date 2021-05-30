@@ -1,17 +1,14 @@
 import * as mongoose from 'mongoose';
 
 const messageSchema = new mongoose.Schema({
-    username: {
-        type: String,
+    sender: {
+        type: String
     },
-    message: {
-        type: String,
-    },
-    room: {
-        type: String,
+    text: {
+        type: String
     },
     date: {
-        type: String,
+        type: String
     }, 
     time: {
         type: String

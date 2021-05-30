@@ -1,4 +1,9 @@
-import * as express from 'express';
+const express = require('express');
+const app = express();
+
+
+
+/*import * as express from 'express';
 import * as cors from 'cors';
 
 import connectDb from './db/index';
@@ -16,3 +21,4 @@ connectDb()
         });
     })
     .catch(error => console.error('Database connection error'));
+*/
