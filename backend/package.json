@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,9 +19,16 @@
     "typescript": "^3.3.3"
   },
   "dependencies": {
+    "@withvoid/make-validation": "^1.0.5",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "mongoose": "^5.12.12"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.13",
+    "mongoose-morgan": "^1.0.17",
+    "morgan": "^1.10.0",
+    "socket.io": "^4.1.2",
+    "uuid": "^8.3.2",
+    "validator": "^13.6.0"
   }
 }
