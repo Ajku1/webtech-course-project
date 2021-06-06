@@ -1,6 +1,6 @@
 import express from 'express';
 import users from '../controllers/user.js';
-import { encode } from '../middleware/jwt.js';
+import { encode } from '../middleware/auth.js';
 
 const router = express.Router();
 
