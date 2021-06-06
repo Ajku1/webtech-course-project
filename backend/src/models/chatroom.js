@@ -1,7 +1,8 @@
-import * as mongoose from 'mongoose';
+import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
-const chatroomSchema = mongoose.Schema({
+const chatroomSchema = new mongoose.Schema(
+  {
     _id: {
         type: String,
         default: () => uuidv4().replace(/\-/g, ""),
@@ -15,7 +16,7 @@ const chatroomSchema = mongoose.Schema({
     description: { 
         type: String
     }
-});
+  }
+);
 
-export default mongoose.model('Chatroom', chatroomSchema);
-//module.exports = mongoose.model('Chatroom', chatroomSchema);
+export default mongoose.model("Chatroom", chatroomSchema);

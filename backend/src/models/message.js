@@ -8,7 +8,7 @@ const chatMessageSchema = new mongoose.Schema(
       default: () => uuidv4().replace(/\-/g, ""),
     },
     chatroom: {
-         type: Schema.Types.ObjectId, ref: 'Chatroom', required: true
+         type: mongoose.Schema.Types.ObjectId, ref: 'Chatroom', required: true
     },
     text: { 
         type: String, require: true 
@@ -23,4 +23,4 @@ const chatMessageSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("ChatMessage", chatMessageSchema);
+export default mongoose.model("Message", chatMessageSchema);

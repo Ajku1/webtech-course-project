@@ -9,7 +9,7 @@ export default {
     });
     chatroom.save().then(
         (createdChatroom) => {
-            res.status(200).json({ result: true, chat: createdChatroom });
+            res.status(200).json({ result: true, chatroom: createdChatroom });
         }
     ).catch(
         (error) => {
@@ -21,11 +21,11 @@ export default {
   getChatroom: async (req, res) => {
     Chatroom.find({})
     .populate('chatroom')
-    .exec(function (error, list_chats) {
+    .exec(function (error, createdChatrooms) {
         if (error) {
-            res.status(500).json({ result: false, message: 'Cannot get chatrooms list', error: error });
+            res.status(500).json({ result: false, message: 'Unable to get created chatrooms', error: error });
         }
-        res.status(200).json({ result: true, chat_list: list_chats });
+        res.status(200).json({ result: true, chatrooms: createdChatrooms });
     })
   },
 }
