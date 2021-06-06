@@ -1,4 +1,4 @@
 export enum RegisterFormControlName {
-    Email,
-    Password
+    Email = 'email',
+    Password = 'password'
 }

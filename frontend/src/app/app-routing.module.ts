@@ -21,17 +21,17 @@ const routes: Routes = [
         path: Route.Register,
         component: RegisterComponent
     },
-    { 
-        path: Route.ChatsPage, 
+    {
+        path: Route.ChatsPage,
         component: ChatsPageComponent
     },
     {
-      path: Route.CreateChatroomModal,
-      component: CreateChatroomModalComponent
+        path: Route.CreateChatroomModal,
+        component: CreateChatroomModalComponent
     },
     {
-      path: Route.Chatroom,
-      component: ChatroomComponent
+        path: Route.Chatroom,
+        component: ChatroomComponent
     },
     {
         path: '**',
@@ -44,4 +44,5 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}
