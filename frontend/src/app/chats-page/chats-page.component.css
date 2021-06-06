@@ -58,8 +58,6 @@
 
 .vertical-menu a.active {
     background-color: #ccc;
-    font-size: 140%;
-    font-weight: bold;
     /*color: white;*/
 }
 
@@ -79,4 +77,17 @@
     color: white;
     border-color: #012342;
     margin-bottom: 2%;
+}
+
+.chat_button {
+    background-color: #DCDDDE;
+    font-size: 140%;
+    color: #114373;
+    text-align: left;
+    width: 100%;
+    height: 5rem;
+    border: white;
+    border-radius: 1rem;
+    border-style: solid;
+    border-width: thin;
 }

@@ -17,15 +17,11 @@ export class ChatsPageComponent {
         this.router.navigate([Route.Home]);
     }
 
-    // onClick() {
-    //     this.router.navigate(['home']);
-    // }
-
     onChat() {
         this.router.navigate([Route.Chatroom]);
     }
 
-    onCreate(){
+    onCreate() {
         this.router.navigate([Route.CreateChatroomModal]);
     }
 }
