@@ -1,11 +1,10 @@
 import express from 'express';
-// controllers
-import controller from '../controllers/chatroom.js';
+import chatroom from '../controllers/chatroom.js';
 
 const router = express.Router();
 
 router
-    .get('/', controller.getChatroom)
-    .post('/', controller.createChatroom)
+  .get('/', chatroom.getChatroom)
+  .post('/', chatroom.createChatroom)
 
 export default router;

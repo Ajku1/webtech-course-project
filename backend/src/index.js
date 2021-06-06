@@ -5,6 +5,7 @@ import "./config/mongo.js";
 
 import indexRouter from "./routes/index.js";
 import userRouter from "./routes/user.js";
+import chatroomRouter from "./routes/chatroom.js";
 
 const port = process.env.PORT || "3000";
 const app = express();
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use("/", indexRouter);
 app.use("/users", userRouter);
+app.use("/chatroom", decode, chatroomRouter);
 
 app.use('*', (req, res) => {
   return res.status(404).json({
