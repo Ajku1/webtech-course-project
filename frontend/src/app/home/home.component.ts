@@ -8,13 +8,12 @@ import { Route } from "../route.enum";
     styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    heading: string = 'Welcome to the chat!';
+    heading: string = 'Welcome to Instant Messenger!';
     loginButtonText: string = 'Login if you are already an user';
     registerButtonText: string = 'Register here if you are new';
 
     constructor(private readonly router: Router) {
     }
-
 
     navigateToLoginPage() {
         this.router.navigate([Route.Login]);
