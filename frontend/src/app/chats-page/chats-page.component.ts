@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Route } from "../route.enum";
 
 
@@ -9,23 +9,19 @@ import { Route } from "../route.enum";
     styleUrls: ['./chats-page.component.css']
 })
 export class ChatsPageComponent {
-    constructor(private router: Router) {
-        console.log(this.router.url)
-    }
-    
-    onLogout() {
-        this.router.navigate([Route.Home]);
+    constructor(private readonly router: Router) {
     }
 
-    // onClick() {
-    //     this.router.navigate(['home']);
-    // }
+    onLogout() {
+        localStorage.removeItem('user');
+        this.router.navigate([Route.Home]);
+    }
 
     onChat() {
         this.router.navigate([Route.Chatroom]);
     }
 
-    onCreate(){
+    onCreate() {
         this.router.navigate([Route.CreateChatroomModal]);
     }
 }

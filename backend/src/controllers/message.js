@@ -31,4 +31,4 @@ export default {
             res.status(200).json({ result: true, message_list: list_messages });
         })
   },
-}
+};

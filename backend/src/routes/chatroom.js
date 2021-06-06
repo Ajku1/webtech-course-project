@@ -4,7 +4,7 @@ import chatroom from '../controllers/chatroom.js';
 const router = express.Router();
 
 router
-  .get('/', chatroom.getChatroom)
-  .post('/', chatroom.createChatroom)
+    .get('/', chatroom.getChatroom)
+    .post('/', chatroom.createChatroom);
 
 export default router;
