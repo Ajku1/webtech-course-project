@@ -28,4 +28,4 @@ export default {
         res.status(200).json({ result: true, chatrooms: createdChatrooms });
     })
   },
-}
+};
