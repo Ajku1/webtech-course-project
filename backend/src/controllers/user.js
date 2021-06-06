@@ -38,4 +38,4 @@ export default {
           res.json({result, email: req.body.email});
       });
   }
-}
+};
