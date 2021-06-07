@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { LoginFormControlName } from "./models/login-form-control-name.enum";
-import { UserService } from "../services/user.service";
-import { Router } from "@angular/router";
-import { Route } from "../route.enum";
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginFormControlName } from './models/login-form-control-name.enum';
+import { UserService } from '../services/user.service';
+import { Route } from '../route.enum';
 
 @Component({
     selector: 'chat-login',
@@ -12,7 +12,9 @@ import { Route } from "../route.enum";
 })
 export class LoginComponent {
     readonly submitButtonText: string = 'Login';
+
     readonly loginFormControlNames: typeof LoginFormControlName = LoginFormControlName;
+
     readonly loginForm: FormGroup;
 
     invalidCredentials: boolean = false;
@@ -30,7 +32,6 @@ export class LoginComponent {
         const email: string = this.loginForm.get(LoginFormControlName.Email)?.value;
         const password: string = this.loginForm.get(LoginFormControlName.Password)?.value;
         this.userService.login(email, password).subscribe((res) => {
-            console.log(res);
             if ((res as any).result) {
                 this.router.navigate([Route.ChatsPage]);
             } else {

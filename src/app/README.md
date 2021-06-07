@@ -1,1 +1,0 @@
-install -> npm i ng2-search-filter --save

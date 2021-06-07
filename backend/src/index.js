@@ -1,11 +1,11 @@
-import http from 'http';
+import cors from 'cors';
 import express from 'express';
+import http from 'http';
 import logger from 'morgan';
 import './config/mongo.js';
 import userRouter from './routes/user.js';
 import chatroomRouter from './routes/chatroom.js';
 import messageRouter from './routes/message.js';
-import cors from 'cors';
 
 const port = process.env.PORT || '3000';
 const app = express();
