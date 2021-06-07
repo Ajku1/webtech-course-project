@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Route } from "../route.enum";
-
+import { Route } from '../route.enum';
 
 @Component({
     selector: 'app-chats-page',
