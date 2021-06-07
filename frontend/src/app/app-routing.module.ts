@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './users/login/login.component';
+import { RegisterComponent } from './users/register/register.component';
 import { CreateChatroomModalComponent } from './create-chatroom-modal/create-chatroom-modal.component';
 import { Route } from './route.enum';
 import { ChatsPageComponent } from './chats-page/chats-page.component';

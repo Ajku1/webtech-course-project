@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginFormControlName } from './models/login-form-control-name.enum';
-import { UserService } from '../services/user.service';
-import { Route } from '../route.enum';
+import { UserService } from '../user.service';
+import { Route } from '../../route.enum';
 
 @Component({
     selector: 'chat-login',
@@ -33,6 +33,7 @@ export class LoginComponent {
         const password: string = this.loginForm.get(LoginFormControlName.Password)?.value;
         this.userService.login(email, password).subscribe((res) => {
             if ((res as any).result) {
+                localStorage.setItem('user', email);
                 this.router.navigate([Route.ChatsPage]);
             } else {
                 this.invalidCredentials = true;

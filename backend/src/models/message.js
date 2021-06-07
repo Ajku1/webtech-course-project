@@ -7,22 +7,18 @@ const chatMessageSchema = new mongoose.Schema(
             type: String,
             default: () => uuidv4().replace(/-/g, '')
         },
-        chatroom: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Chatroom',
-            required: true
-        },
         text: {
             type: String,
             require: true
         },
         sender: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
             require: true
         },
         sendDate: {
             type: Date,
-            default: Date.now
+            default: Date.now()
         }
     }
 );
