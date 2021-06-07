@@ -1,26 +1,30 @@
-import mongoose from "mongoose";
-import { v4 as uuidv4 } from "uuid";
+import mongoose from 'mongoose';
+import { v4 as uuidv4 } from 'uuid';
 
 const chatMessageSchema = new mongoose.Schema(
-  {
-    _id: {
-      type: String,
-      default: () => uuidv4().replace(/\-/g, ""),
-    },
-    chatroom: {
-         type: mongoose.Schema.Types.ObjectId, ref: 'Chatroom', required: true
-    },
-    text: { 
-        type: String, require: true 
-    },
-    sender: { 
-        type: String, require: true 
-    },
-    sendDate: {
-        type: Date,
-        default: Date.now
+    {
+        _id: {
+            type: String,
+            default: () => uuidv4().replace(/-/g, '')
+        },
+        chatroom: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Chatroom',
+            required: true
+        },
+        text: {
+            type: String,
+            require: true
+        },
+        sender: {
+            type: String,
+            require: true
+        },
+        sendDate: {
+            type: Date,
+            default: Date.now
+        }
     }
-  }
 );
 
-export default mongoose.model("Message", chatMessageSchema);
+export default mongoose.model('Message', chatMessageSchema);

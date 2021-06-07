@@ -5,7 +5,7 @@ export default {
     const chatroom = new Chatroom({
         name: req.body.name,
         members: req.body.members,
-        description: req.body.description,
+        description: req.body.description
     });
     chatroom.save().then(
         (createdChatroom) => {
@@ -13,7 +13,7 @@ export default {
         }
     ).catch(
         (error) => {
-            console.log(error)
+            console.log(error);
             res.status(500).json({ result: false, message: 'Unable to create chatroom', error: error });
         }
     );
@@ -21,11 +21,11 @@ export default {
   getChatroom: async (req, res) => {
     Chatroom.find({})
     .populate('chatroom')
-    .exec(function (error, createdChatrooms) {
+    .exec((error, createdChatrooms) => {
         if (error) {
-            res.status(500).json({ result: false, message: 'Unable to get created chatrooms', error: error });
+            res.status(500).json({ result: false, message: 'Unable to get created chatrooms', error });
         }
         res.status(200).json({ result: true, chatrooms: createdChatrooms });
-    })
-  },
+    });
+  }
 };
