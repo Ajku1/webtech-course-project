@@ -33,6 +33,7 @@ export class LoginComponent {
         const password: string = this.loginForm.get(LoginFormControlName.Password)?.value;
         this.userService.login(email, password).subscribe((res) => {
             if ((res as any).result) {
+                localStorage.setItem('user', email);
                 this.router.navigate([Route.ChatsPage]);
             } else {
                 this.invalidCredentials = true;
