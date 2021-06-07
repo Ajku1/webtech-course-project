@@ -12,11 +12,15 @@ const chatroomSchema = new mongoose.Schema(
             required: true
         },
         members: [{
-            type: String
+            type: String,
+            required: true
         }],
         description: {
             type: String
-        }
+        },
+        messages: [{
+            type: String
+        }]
     }
 );
 

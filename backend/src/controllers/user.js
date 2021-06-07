@@ -2,7 +2,7 @@ import * as bcrypt from 'bcrypt';
 import User from '../models/user.js';
 
 export default {
-  getUsers: async (req, res) => {
+  getUsers: (req, res) => {
     User.find()
     .populate('user')
     .exec((error, createdUsers) => {
@@ -12,15 +12,16 @@ export default {
         res.status(200).json({ result: true, users: createdUsers });
     });
   },
-  createUser: async (req, res) => {
+  createUser: (req, res) => {
     bcrypt.hash(req.body.password, 10, (err, hash) => {
         const user = new User({
             password: hash,
-            email: req.body.email
+            email: req.body.email,
+            name: req.body.name
         });
         user.save().then(
             (createdUser) => {
-                res.json({ result: true, email: createdUser.email });
+                res.json({ name: createdUser.name, email: createdUser.email });
             }
             ).catch((error) => {
                 console.log(error);
