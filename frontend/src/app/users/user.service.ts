@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
+import { User } from './user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    email?: string;
+    currentUser?: User;
 
     constructor(private readonly httpClient: HttpClient) {
     }
@@ -13,10 +15,11 @@ export class UserService {
         return this.httpClient.post('/api/users/login', { email, password });
     }
 
-    register(email: string, password: string) {
-        return this.httpClient.post('/api/users/register', { email, password })
-            .subscribe((result) => {
-                localStorage.setItem('user', (result as any).email);
+    register(email: string, password: string, name: string): void {
+        const userObservable = this.httpClient.post('/api/users/register', { email, password, name }) as Observable<User>;
+        userObservable.pipe(take(1))
+            .subscribe((user: User) => {
+                this.currentUser = user;
             });
     }
 }

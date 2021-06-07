@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterFormControlName } from './models/register-form-control-name.enum';
-import { UserService } from '../services/user.service';
-import { Route } from '../route.enum';
+import { UserService } from '../user.service';
+import { Route } from '../../route.enum';
 
 @Component({
     selector: 'chat-register',
@@ -22,14 +22,16 @@ export class RegisterComponent {
                 private readonly router: Router) {
         this.registerForm = formBuilder.group({
             [RegisterFormControlName.Email]: [null, Validators.required],
-            [RegisterFormControlName.Password]: [null, Validators.required]
+            [RegisterFormControlName.Password]: [null, Validators.required],
+            [RegisterFormControlName.Name]: [null, Validators.required]
         });
     }
 
     onFormSubmit(): Promise<boolean> {
         const email: string = this.registerForm.get(RegisterFormControlName.Email)?.value;
         const password: string = this.registerForm.get(RegisterFormControlName.Password)?.value;
-        this.userService.register(email, password);
+        const name: string = this.registerForm.get(RegisterFormControlName.Name)?.value;
+        this.userService.register(email, password, name);
         return this.router.navigate([Route.ChatsPage]);
     }
 }
