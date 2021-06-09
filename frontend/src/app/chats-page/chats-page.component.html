@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chats</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="chats-page.component.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!-- 
+    <style type="text/css"
+
+    </style> -->
+  </head>
+
+  <body id="body">
+    <div class="container">
+      <!-- header -->
+      <div class="jumbotron">
+        <h1 id="chatsHeader">Chats</h1>
+      </div>
+
+      <!-- log out button  -->
+      <div>
+        <button (click)="onLogout()" id="logout">Log out</button>
+      </div>
+
+      <!-- search -->
+      <div>
+        <!-- <textarea id="search" placeholder="search" rows="1"  overflow: hidden>
+
+        </textarea> -->
+        <textarea id="search" placeholder="search" rows="1"></textarea>
+      </div>
+
+      <!-- choose chat room menu -->
+      <div class="vertical-menu">
+        <button (click)="onChat()" class="chat_button" id="chat_button_1">Chat 1</button>
+        <button (click)="onChat()" class="chat_button"id="chat_button_2">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button_3">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button_4">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button_5">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button_6">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button_7">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button_8">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button">Chat 1</button>
+        <button (click)="onChat()" class="chat_button" id="chat_button">Chat 1</button>
+      </div>
+
+      <!-- Create chat room button -->
+      <div>
+        <button (click)="onCreate()" id="addChat">Create</button>
+      </div>
+
+    </div>
+  </body>
+</html>
