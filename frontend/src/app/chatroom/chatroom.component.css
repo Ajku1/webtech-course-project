@@ -2,33 +2,28 @@
 	box-sizing:border-box;
 }
 body{
-	background-color: rgb(182 207 243);
+	background-color:#abd9e9;
 	font-family:Arial;
 }
 #container{
-	width:700px;
-	/*height: 800px;*/
-	/*max-height: 600px;*/
-    height: 100%;
+	width:750px;
+	height:800px;
 	background:#eff3f7;
 	margin:0 auto;
 	font-size:0;
 	border-radius:5px;
 	overflow:hidden;
-	box-shadow: 5px 10px 18px #40405c;
 }
 aside{
-    width: 230px;
-    height: 800px;
-    /*background-color: rgb(17 67 115);*/
-    display: inline-block;
-    font-size: 15px;
-    vertical-align: top;
-	/*background: linear-gradient(89deg, rgb(26 97 185) 0%, rgb(124 173 224) 100%);*/
-	background: linear-gradient(89deg, rgb(17 67 115) 0%, rgb(65 129 218) 100%);
+	width:260px;
+	height:800px;
+	background-color:#3b3e49;
+	display:inline-block;
+	font-size:15px;
+	vertical-align:top;
 }
-.chatbox{
-	width:470px;
+main{
+	width:490px;
 	height:800px;
 	display:inline-block;
 	font-size:15px;
@@ -36,21 +31,21 @@ aside{
 }
 
 aside header{
-	padding: 30px 15px;
+	padding:30px 20px;
 }
 aside input{
-    width: 100%;
-    height: 40px;
-    line-height: 50px;
-    padding: 0 50px 0 20px;
-    background-color: rgb(177 204 230 / 69%);
-    border: none;
-    border-radius: 4px;
-    color: #114373;
-    /* background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png); */
-    /* background-repeat: no-repeat; */
-    /* background-position: 170px; */
-    /* background-size: 40px;*/
+	width:100%;
+	height:50px;
+	line-height:50px;
+	padding:0 50px 0 20px;
+	background-color:#5e616a;
+	border:none;
+	border-radius:3px;
+	color:#fff;
+	background-image:url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_search.png);
+	background-repeat:no-repeat;
+	background-position:170px;
+	background-size:40px;
 }
 aside input::placeholder{
 	color:#fff;
@@ -101,7 +96,7 @@ aside li h3{
 	margin-right:7px;
 }
 .green{
-	background-color:#307bc3;
+	background-color:#ff725d;
 }
 
 .blue{
@@ -110,28 +105,29 @@ aside li h3{
 	margin-left:7px;
 }
 
-.chatbox header{  
-    padding: 30px 10px 20px 10px;
+main header{  
+	height:110px;
+	padding:30px 20px 30px 40px;
 }
-.chatbox header > *{
+main header > *{
 	display:inline-block;
 	vertical-align:top;
 }
-.chatbox header img:first-child{
+main header img:first-child{
 	border-radius:50%;
 }
-.chatbox header img:last-child{
+main header img:last-child{
 	width:24px;
 	margin-top:8px;
 }
-.chatbox header div{
+main header div{
 	margin-left:10px;
 	margin-right:145px;
 }
-.chatbox header h2{
+main header h2{
 	font-size:20px;
 	margin-bottom:5px;
-  color : #114373;
+  color : #505253
 }
 
 
@@ -140,7 +136,7 @@ aside li h3{
 	margin:0;
 	list-style-type:none;
 	overflow-y:scroll;
-	height:420px;
+	height:535px;
 	border-top:2px solid #fff;
 	border-bottom:2px solid #fff;
 }
@@ -159,7 +155,7 @@ aside li h3{
 	margin-bottom:5px;
 }
 #chat .message{
-	padding:10px;
+	padding:20px;
 	color:#fff;
 	line-height:25px;
 	max-width:90%;
@@ -171,7 +167,7 @@ aside li h3{
 	text-align:right;
 }
 #chat .you .message{
-	background-color:#307bc3;
+	background-color:#ff725d;
 }
 #chat .me .message{
 	background-color:#6fbced;
@@ -183,7 +179,7 @@ aside li h3{
 	border-width: 0 10px 10px 10px;
 }
 #chat .you .triangle{
-		border-color: transparent transparent #307bc3 transparent;
+		border-color: transparent transparent #ff725d transparent;
 		margin-left:15px;
 }
 #chat .me .triangle{
@@ -191,36 +187,38 @@ aside li h3{
 		margin-left:375px;
 }
 
-.chatbox footer{
+main footer{
 	height:155px;
 	padding:20px 30px 10px 20px;
 }
-.chatbox footer textarea{
-    resize: none;
-    display: block;
-    width: 100%;
-    /* height: 80px; */
-    padding: 10px;
-    font-size: 13px;
-    margin-bottom: 13px;
-    border: 2px solid rgb(65 129 218);
-    border-radius: 4px;
+main footer textarea{
+	resize:none;
+	border:none;
+	display:block;
+	width:100%;
+	height:80px;
+	border-radius:3px;
+	padding:20px;
+	font-size:13px;
+	margin-bottom:13px;
 }
-.chatbox footer textarea::placeholder{
+main footer textarea::placeholder{
 	color:#ddd;
 }
-.chatbox footer img{
+main footer img{
 	height:30px;
 	cursor:pointer;
 }
-.chatbox footer a{
-    text-decoration: none;
-    padding: 8px 30px;
-    border: none;
-    background-color: rgb(17 67 115);
-    font-size: 18px;
-    cursor: pointer;
-    border-radius: 4px;
-    color: white;
-    float: right;
+main footer a{
+	text-decoration:none;
+	text-transform:uppercase;
+	font-weight:bold;
+	color:#3b3e49;
+	vertical-align:top;
+	margin-left:360px;
+	margin-top:1px;
+	display:inline-block;
+  border: 2px#3b3e49 solid;
+  padding: 7px;
+  font-size: 17px;
 }
