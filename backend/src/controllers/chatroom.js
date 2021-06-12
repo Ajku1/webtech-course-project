@@ -1,11 +1,12 @@
 import Chatroom from '../models/chatroom.js';
 
 export default {
-  createChatroom: (req, res) => {
+  createChatroom: (req, res) => {  
     const chatroom = new Chatroom({
         name: req.body.name,
         members: req.body.members,
-        description: req.body.description
+        description: req.body.description,
+        messages: req.body.messages
     });
     chatroom.save().then(
         (createdChatroom) => {
@@ -19,7 +20,7 @@ export default {
     );
   },
   getChatroom: async (req, res) => {
-    Chatroom.findOne({ name: req.body.name })
+    Chatroom.findOne({ }) // name: req.body.name
     .populate('chatroom')
     .exec((error, createdChatrooms) => {
         if (error) {

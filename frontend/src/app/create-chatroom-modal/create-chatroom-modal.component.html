@@ -9,7 +9,7 @@
       </section>
       <section class="modal-body">
         <label class="step-input-description" for="room-name">Choose right name for your room:</label>
-        <input type="text" id="room-name" name="room-name" placeholder="Enter room name..." [(ngModel)]="chatroomName">
+        <input type="text" id="room-name" name="room-name" placeholder="Enter room name..." [(ngModel)]="chatroomName" required/>
       </section>
     </div>
       <div *ngIf="step == 2">
@@ -67,7 +67,7 @@
     <section class="modal-footer">
       <button type="button" class="prev-btn" *ngIf="step != 1" (click)="previous()">Prev</button>
       <button type="button" class="next-btn" *ngIf="step != 4" (click)="submit()">Next</button>
-      <button type="submit" class="create-btn" *ngIf="step == 4" (click)="onCreateChatroom()">Create</button>
+      <button type="button" class="create-btn" *ngIf="step == 4" (click)="onCreateChatroom()">Create</button>
     </section>    
   </form>      
 </div>
