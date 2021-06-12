@@ -20,7 +20,7 @@ export default {
     );
   },
   getChatroom: async (req, res) => {
-    Chatroom.findOne({ }) // name: req.body.name
+    Chatroom.find({})
     .populate('chatroom')
     .exec((error, createdChatrooms) => {
         if (error) {
