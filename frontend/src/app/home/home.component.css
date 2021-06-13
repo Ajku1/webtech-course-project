@@ -4,12 +4,16 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    height: 99vh;
+    width: 99vw;
 }
 
 .heading {
     display: flex;
     justify-content: center;
-    font-size: 32px;
+    font-size: 50px;
+    color: rgb(18 84 148);
+    font-weight: bold;
 }
 
 .navigation-buttons {
@@ -18,13 +22,20 @@
 }
 
 .navigation-button {
-    font-size: 24px;
-    padding: 1rem;
+    padding: 20px 20px;
+    border: none;
+    background: linear-gradient(178deg, rgb(17 67 115) 0%, rgb(65 129 218) 100%);
+    font-size: 14px;
+    cursor: pointer;
+    color: white;
+    border-radius: 10%;
+    text-align: center;
     transition-duration: 0.4s;
+    box-shadow: 5px 10px 10px rgb(123 152 179);
 }
 
 .navigation-button:hover {
-    background-color: #F67280;
+    background-color: #8eb5fd;
     color: white;
 }
 
@@ -32,4 +43,7 @@
     display: flex;
     align-items: center;
     font-size: 24px;
+    font-size: 35px;
+    color: rgb(18 84 148);
+    font-weight: bold;
 }

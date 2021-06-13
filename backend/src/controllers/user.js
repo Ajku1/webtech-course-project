@@ -9,7 +9,7 @@ export default {
         if (error) {
             res.status(500).json({ result: false, message: 'Unable to get users', error });
         }
-        res.status(200).json({ result: true, users: createdUsers });
+        res.status(200).json(createdUsers);//.json({ result: true, users: createdUsers});
     });
   },
   createUser: (req, res) => {

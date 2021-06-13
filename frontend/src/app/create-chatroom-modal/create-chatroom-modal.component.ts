@@ -1,32 +1,47 @@
-import { Component } from '@angular/core';
+import { ConditionalExpr } from '@angular/compiler';
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CreateChatroomService } from '../create-chatroom-modal/create-chatroom.service';
+import { User } from './user.interface';
+import { Route } from '../route.enum';
+import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-create-chatroom-modal',
-    templateUrl: './create-chatroom-modal.component.html',
-    styleUrls: ['./create-chatroom-modal.component.css']
+  selector: 'app-create-chatroom-modal',
+  templateUrl: './create-chatroom-modal.component.html',
+  styleUrls: ['./create-chatroom-modal.component.css']
 })
 
-export class CreateChatroomModalComponent {
-    step: number = 1;
+export class CreateChatroomModalComponent implements OnInit {
+  searchText = '';
+  step: number = 1;
+  chatroomName: string = '';
+  chatroomDescription: string = '';
+  users : User[] = [];
+  members: User[] = [];
 
-    submit() {
-        this.step += 1;
-    }
+  constructor(private readonly createChatroomService: CreateChatroomService,
+    private readonly router: Router) { }
 
-    previous() {
-        this.step -= 1;
-    }
+  ngOnInit(): void {
+    this.createChatroomService.getUsers().subscribe( user => this.users.push(user));
+  }
 
-    searchText = '';
+  submit() {
+    this.step = this.step + 1;
+  }
 
-    members = [
-        { name: 'Member1' },
-        { name: 'Member2' },
-        { name: 'Member3' },
-        { name: 'Member4' },
-        { name: 'Member5' },
-        { name: 'Member6' },
-        { name: 'Member7' },
-        { name: 'Member8' }
-    ];
+  previous() {
+    this.step = this.step - 1;
+  }
+
+  onSelectUser(user: User){
+    this.members.push(user);
+  }
+
+  onCreateChatroom() {
+    this.createChatroomService.createChatroom(this.chatroomName, this.members, this.chatroomDescription);
+    this.router.navigate([Route.Chatroom]);
+  }
+
 }
