@@ -13,12 +13,14 @@ export class CreateChatroomService {
         return this.httpClient.get<User>('/api/users');
     }
 
-    createChatroom(name: string, members: User[], description: string) {
+    createChatroom(id: string, name: string, members: User[], description: string) {
         this.httpClient.post<any>('/api/chatroom', 
-        { name: name,  
-          members: members,
-          description: description,
-          messages: [] 
+        {
+            id: id,
+            name: name,  
+            members: members,
+            description: description,
+            messages: [] 
         }).subscribe((room)=>{
             return room;
         });
