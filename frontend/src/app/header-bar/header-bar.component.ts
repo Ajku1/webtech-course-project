@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserService } from '../users/user.service';
 import { Router } from '@angular/router';
+import { UserService } from '../users/user.service';
 import { Route } from '../route.enum';
 import { User } from '../users/user.interface';
 import { NO_USER_LOGGED_IN_MESSAGE } from '../constants';
@@ -12,6 +12,7 @@ import { NO_USER_LOGGED_IN_MESSAGE } from '../constants';
 })
 export class HeaderBarComponent {
     headerMessage: string = NO_USER_LOGGED_IN_MESSAGE;
+
     userLoggedIn: boolean = false;
 
     constructor(private readonly userService: UserService,

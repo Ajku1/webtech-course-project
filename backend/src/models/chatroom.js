@@ -12,9 +12,8 @@ const chatroomSchema = new mongoose.Schema(
             required: true
         },
         members: [{
-            //type: String,
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: 'User',
             require: true
         }],
         description: {
