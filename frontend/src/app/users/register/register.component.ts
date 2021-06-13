@@ -27,11 +27,13 @@ export class RegisterComponent {
         });
     }
 
-    onFormSubmit(): Promise<boolean> {
+    onFormSubmit(): void {
         const email: string = this.registerForm.get(RegisterFormControlName.Email)?.value;
         const password: string = this.registerForm.get(RegisterFormControlName.Password)?.value;
         const name: string = this.registerForm.get(RegisterFormControlName.Name)?.value;
-        this.userService.register(email, password, name);
-        return this.router.navigate([Route.ChatsPage]);
+        this.userService.register(email, password, name)
+            .subscribe(() => {
+                this.router.navigate([Route.ChatsPage]);
+            });
     }
 }

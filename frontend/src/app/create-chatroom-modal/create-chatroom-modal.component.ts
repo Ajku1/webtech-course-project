@@ -1,53 +1,58 @@
-import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { CreateChatroomService } from '../create-chatroom-modal/create-chatroom.service';
+import { Router } from '@angular/router';
+import { CreateChatroomService } from './create-chatroom.service';
 import { User } from './user.interface';
 import { Route } from '../route.enum';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-chatroom-modal',
   templateUrl: './create-chatroom-modal.component.html',
   styleUrls: ['./create-chatroom-modal.component.css']
 })
-
 export class CreateChatroomModalComponent implements OnInit {
-  searchText = '';
-  step: number = 1;
-  chatroomName: string = '';
-  chatroomDescription: string = '';
-  users : User[] = [];
-  members: User[] = [];
+    searchText = '';
 
-  constructor(private readonly createChatroomService: CreateChatroomService,
-    private readonly router: Router) { }
+    step: number = 1;
 
-  ngOnInit(): void {
-    this.createChatroomService.getUsers().subscribe( user => this.users.push(user));
-  }
+    chatroomName: string = '';
 
-  submit() {
-    this.step = this.step + 1;
-  }
+    chatroomDescription: string = '';
 
-  previous() {
-    this.step = this.step - 1;
-  }
+    users: User[] = [];
 
-  onSelectUser(user: User){
-    this.members.push(user);
-  }
+    members: User[] = [];
 
-  onDeleteMember(member: User){
-    this.members.forEach((m, index)=>{
-      if(m.email==member.email) this.members.splice(index,1);
-  });
-  }
+    constructor(private readonly createChatroomService: CreateChatroomService,
+                private readonly router: Router) {
+    }
 
-  onCreateChatroom() {
-    this.createChatroomService.createChatroom(this.chatroomName, this.members, this.chatroomDescription);
-    this.router.navigate([Route.Chatroom]);
-  }
+    ngOnInit(): void {
+        this.createChatroomService.getUsers()
+            .subscribe((user: User) => {
+                this.users = [...this.users, user];
+            });
+    }
 
+    submit(): void {
+        this.step++;
+    }
+
+    previous(): void {
+        this.step--;
+    }
+
+    onSelectUser(user: User): void {
+        this.members = [...this.members, user];
+    }
+
+    onDeleteMember(member: User) {
+      this.members.forEach((m, index)=>{
+        if(m.email==member.email) this.members.splice(index, 1);
+      });
+    }
+
+    onCreateChatroom(): void {
+        this.createChatroomService.createChatroom(this.chatroomName, this.members, this.chatroomDescription);
+        this.router.navigate([Route.Chatroom]);
+    }
 }

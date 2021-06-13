@@ -4,5 +4,5 @@ export interface Chatroom {
     name: string;
     members: User[];
     description: string;
-    messages: string[];    
+    messages: string[];
 }
