@@ -1,35 +1,52 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CreateChatroomService } from './create-chatroom.service';
+import { User } from './user.interface';
+import { Route } from '../route.enum';
 
 @Component({
-  selector: 'app-create-chatroom-modal',
-  templateUrl: './create-chatroom-modal.component.html',
-  styleUrls: ['./create-chatroom-modal.component.css']
+    selector: 'app-create-chatroom-modal',
+    templateUrl: './create-chatroom-modal.component.html',
+    styleUrls: ['./create-chatroom-modal.component.css']
 })
-
 export class CreateChatroomModalComponent implements OnInit {
-  step: number = 1;
-  constructor() { }
+    searchText = '';
 
-  ngOnInit(): void {
-  }
+    step: number = 1;
 
-  submit() {
-    this.step = this.step + 1;
-  }
+    chatroomName: string = '';
 
-  previous() {
-    this.step = this.step - 1;
-  }
+    chatroomDescription: string = '';
 
-searchText = '';
-members = [
-  { name: 'Member1' },
-  { name: 'Member2' },
-  { name: 'Member3' },
-  { name: 'Member4' },
-  { name: 'Member5' },
-  { name: 'Member6' },
-  { name: 'Member7' },
-  { name: 'Member8' },
-];
+    users: User[] = [];
+
+    members: User[] = [];
+
+    constructor(private readonly createChatroomService: CreateChatroomService,
+                private readonly router: Router) {
+    }
+
+    ngOnInit(): void {
+        this.createChatroomService.getUsers()
+            .subscribe((user: User) => {
+                this.users = [...this.users, user];
+            });
+    }
+
+    submit(): void {
+        this.step++;
+    }
+
+    previous(): void {
+        this.step--;
+    }
+
+    onSelectUser(user: User): void {
+        this.members = [...this.members, user];
+    }
+
+    onCreateChatroom(): void {
+        this.createChatroomService.createChatroom(this.chatroomName, this.members, this.chatroomDescription);
+        this.router.navigate([Route.Chatroom]);
+    }
 }

@@ -7,5 +7,6 @@
         Password:
         <input type="password" [formControlName]="loginFormControlNames.Password">
     </label>
+    <span *ngIf="loginFailed">{{ errorMessage }}</span>
     <button class="submit-button" type="submit" [disabled]="loginForm.invalid">{{ submitButtonText}}</button>
 </form>
