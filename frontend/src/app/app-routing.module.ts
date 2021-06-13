@@ -29,6 +29,11 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
     },
     {
+        path: Route.Home,
+        component: HomeComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
         path: Route.Chatroom,
         component: ChatroomComponent,
         canActivate: [AuthGuardService]

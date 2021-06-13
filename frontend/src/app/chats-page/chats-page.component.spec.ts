@@ -2,8 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatsPageComponent } from './chats-page.component';
 
-var a = 5;
-
 describe('ChatsPageComponent', () => {
   let component: ChatsPageComponent;
   let fixture: ComponentFixture<ChatsPageComponent>;
