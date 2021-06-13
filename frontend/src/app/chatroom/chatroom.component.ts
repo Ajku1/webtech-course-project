@@ -23,15 +23,19 @@ export class ChatroomComponent  implements OnInit{
     
 
     ngOnInit(): void {
-    
+      
+    }
+
+    ngOnDestroy(): void {
+      this.chatroomService.socketDisconect();
     }
 
     @Input()
     get Chatroom(): any { return this.chatroom; }
     set Chatroom(chatroom: any) {
-      this.chatroom = (chatroom);
-      //this.chatService.setChatId(chatroom.id)
-      //this.loadMessages();
+    this.chatroom = (chatroom);
+    //this.chatService.setChatId(chatroom.id)
+    //this.loadMessages();
     }
 
     loadMessages() {
@@ -53,6 +57,7 @@ export class ChatroomComponent  implements OnInit{
           if (this.newMessage === ""){
               return;
           }
-          this.chatroomService.sendMessage(this.newMessage);
+          this.chatroomService.sendMessage(this.newMessage, this.chatroom.id);
+          this.newMessage = "";
       }
 }
