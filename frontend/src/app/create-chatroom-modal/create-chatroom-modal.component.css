@@ -204,3 +204,31 @@ textarea {
 li {
   margin-top: 3px;
 }
+
+.empty-area-info {
+  width: 100%;
+  height: 70px;
+  overflow-y: scroll;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.member-info-data {
+  display: inline-block;
+  padding: 3px;
+  color: #84879b;
+  border: 2px solid rgb(186 201 222);
+  border-radius: 5px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  background-color: #f8f8f8;
+  font-size: 14px;
+}
+
+.delete-member-info-btn {
+  background: none;
+  border: none;
+  color: rgb(17 67 115);
+  font-weight: 800;
+  margin-left: 3px;
+}

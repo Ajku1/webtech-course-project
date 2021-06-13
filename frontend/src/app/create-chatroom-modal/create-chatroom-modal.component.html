@@ -23,7 +23,9 @@
 		      <div class="empty-area">
 			      <div *ngFor="let user of users[0] |filter:searchText;" class="list-members">
 				      <ul>
-                <li class="username">{{user.name}}<button type='button' class="add-member-btn" (click)="onSelectUser(user)">+</button></li>                          
+                <li class="username">{{user.name}}
+                  <button type='button' class="add-member-btn" (click)="onSelectUser(user)">+</button>
+                </li>                          
               </ul>
             </div>
 		      </div>
@@ -36,7 +38,7 @@
         </section>
         <section class="modal-body">
           <label class="step-input-description" for="description">Add description to your room:</label> 
-          <textarea id="description" name="description"  placeholder="Enter room description..." [(ngModel)]="chatroomDescription"></textarea>
+          <textarea id="description" name="description" placeholder="Enter room description..." [(ngModel)]="chatroomDescription"></textarea>
         </section>
     </div>
     <div *ngIf="step == 4">
@@ -54,9 +56,13 @@
         </div>
         <div class="info-part">
          <label class="info-description" for="room-info">Members:</label> 
-         <ul class="members-inline" *ngFor="let member of members">
-          <li class="info-data">{{member.name}}</li>                         
-         </ul>
+          <div class="empty-area-info">
+            <ul class="members-inline" *ngFor="let member of members">
+              <li class="member-info-data">{{member.name}}
+                <button type="button" class="delete-member-info-btn" (click)="onDeleteMember(member)">X</button>
+              </li>                         
+            </ul>
+          </div>  
         </div>
         <div class="info-part">
          <label class="info-description" for="room-info">Description:</label>

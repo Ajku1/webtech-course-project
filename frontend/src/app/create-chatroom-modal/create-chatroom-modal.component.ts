@@ -39,6 +39,12 @@ export class CreateChatroomModalComponent implements OnInit {
     this.members.push(user);
   }
 
+  onDeleteMember(member: User){
+    this.members.forEach((m, index)=>{
+      if(m.email==member.email) this.members.splice(index,1);
+  });
+  }
+
   onCreateChatroom() {
     this.createChatroomService.createChatroom(this.chatroomName, this.members, this.chatroomDescription);
     this.router.navigate([Route.Chatroom]);
