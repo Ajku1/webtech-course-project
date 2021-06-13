@@ -12,9 +12,12 @@ module.exports = {
     },
     rules: {
         '@typescript-eslint/comma-dangle': ['error', 'never'],
+        'template-curly-spacing': ['error', 'always'],
+        'max-len': ['error', { 'code': 140 }],
         '@typescript-eslint/indent': 'off',
         'class-methods-use-this': 'off',
         'import/prefer-default-export': 'off',
-        'linebreak-style': 'off'
+        'linebreak-style': 'off',
+        'no-plusplus': 'off'
     }
 };
