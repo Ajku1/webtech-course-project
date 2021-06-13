@@ -11,6 +11,8 @@ import { LoginComponent } from './users/login/login.component';
 import { ChatsPageComponent } from './chats-page/chats-page.component';
 import { CreateChatroomModalComponent } from './create-chatroom-modal/create-chatroom-modal.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
+import { HeaderBarComponent } from './header-bar/header-bar.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
     declarations: [
@@ -20,7 +22,8 @@ import { ChatroomComponent } from './chatroom/chatroom.component';
         LoginComponent,
         ChatsPageComponent,
         CreateChatroomModalComponent,
-        ChatroomComponent
+        ChatroomComponent,
+        HeaderBarComponent
     ],
     imports: [
         BrowserModule,
@@ -28,7 +31,8 @@ import { ChatroomComponent } from './chatroom/chatroom.component';
         ReactiveFormsModule,
         FormsModule,
         Ng2SearchPipeModule,
-        HttpClientModule
+        HttpClientModule,
+        MatButtonModule
     ],
     bootstrap: [AppComponent]
 })

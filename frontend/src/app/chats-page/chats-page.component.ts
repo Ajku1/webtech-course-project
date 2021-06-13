@@ -11,11 +11,6 @@ export class ChatsPageComponent {
     constructor(private readonly router: Router) {
     }
 
-    onLogout() {
-        localStorage.removeItem('user');
-        this.router.navigate([Route.Home]);
-    }
-
     onChat() {
         this.router.navigate([Route.Chatroom]);
     }
