@@ -1,5 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import User from '../models/user.js';
+import { GET_USERS_FAILED, INVALID_CREDENTIALS, REGISTER_FAILED } from '../messages.js';
 
 export default {
   getUsers: (req, res) => {
@@ -7,9 +8,9 @@ export default {
     .populate('user')
     .exec((error, createdUsers) => {
         if (error) {
-            res.status(500).json({ result: false, message: 'Unable to get users', error });
+            res.status(500).json({ result: false, message: GET_USERS_FAILED, error });
         }
-        res.status(200).json(createdUsers);//.json({ result: true, users: createdUsers});
+        res.status(200).json(createdUsers);
     });
   },
   createUser: (req, res) => {
@@ -21,22 +22,26 @@ export default {
         });
         user.save().then(
             (createdUser) => {
-                res.json({ name: createdUser.name, email: createdUser.email });
+                res.status(200).json({ name: createdUser.name, email: createdUser.email });
             }
             ).catch((error) => {
                 console.log(error);
-                res.status(500).json({ result: false, message: 'Unable to create user', error });
+                res.status(500).json({ result: false, message: REGISTER_FAILED, error });
             });
     });
   },
   loginUser: async (req, res) => {
       const user = await User.findOne({ email: req.body.email }).exec();
       if (!user) {
-          res.json({ result: false });
+          res.status(500).json({ message: INVALID_CREDENTIALS });
           return;
       }
-      bcrypt.compare(req.body.password, user.password, (err, result) => {
-          res.json({ result, email: req.body.email });
+      bcrypt.compare(req.body.password, user.password, (err, passwordMatches) => {
+          if (passwordMatches) {
+              res.status(200).json({ name: user.name, email: user.email });
+          } else {
+              res.status(500).json({ message: INVALID_CREDENTIALS });
+          }
       });
   }
 };
