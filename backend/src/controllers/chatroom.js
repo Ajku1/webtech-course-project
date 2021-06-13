@@ -1,11 +1,12 @@
 import Chatroom from '../models/chatroom.js';
 
 export default {
-  createChatroom: async (req, res) => {
+  createChatroom: (req, res) => {  
     const chatroom = new Chatroom({
         name: req.body.name,
         members: req.body.members,
-        description: req.body.description
+        description: req.body.description,
+        messages: req.body.messages
     });
     chatroom.save().then(
         (createdChatroom) => {

@@ -19,15 +19,6 @@ export default {
     );
   },
   getOrderedMessages: async (req, res) => {
-    const sortDate = { sendDate: 1 };
-    Message.find({ chatroom: req.query.chatroom })
-        .sort(sortDate)
-        .populate('message')
-        .exec((error, listMessages) => {
-            if (error) {
-                res.status(500).json({ result: false, message: 'Cannot get message list!', error });
-            }
-            res.status(200).json({ result: true, message_list: listMessages });
-        });
+   
   }
 };
