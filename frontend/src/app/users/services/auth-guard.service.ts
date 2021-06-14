@@ -9,6 +9,6 @@ export class AuthGuardService implements CanActivate {
     }
 
     canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        return this.userService.isLoggedIn;
+        return this.userService.isLoggedIn();
     }
 }

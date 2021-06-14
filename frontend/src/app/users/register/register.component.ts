@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterFormControlName } from './models/register-form-control-name.enum';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Route } from '../../route.enum';
 
 @Component({

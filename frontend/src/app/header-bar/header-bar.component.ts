@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../users/user.service';
+import { UserService } from '../users/services/user.service';
 import { Route } from '../route.enum';
 import { User } from '../users/user.interface';
 import { NO_USER_LOGGED_IN_MESSAGE } from '../constants';
@@ -20,15 +20,13 @@ export class HeaderBarComponent {
         userService.userChanged$
             .subscribe((user: User) => {
                 this.headerMessage = `You are logged in as: ${ user.name }`;
-            });
-        userService.isLoggedIn$
-            .subscribe((isLoggedIn: boolean) => {
-                this.userLoggedIn = isLoggedIn;
+                this.userLoggedIn = true;
             });
     }
 
     onLogOutButtonClick(): void {
         this.headerMessage = NO_USER_LOGGED_IN_MESSAGE;
+        this.userLoggedIn = false;
         this.userService.logOut();
         this.router.navigate([Route.Home]);
     }

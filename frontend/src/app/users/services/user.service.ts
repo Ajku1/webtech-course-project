@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
-import { User } from './user.interface';
-import { USER_EMAIL_LOCAL_STORAGE_KEY } from '../constants';
+import * as moment from 'moment';
+import { User } from '../user.interface';
+import { USER_EMAIL_LOCAL_STORAGE_KEY } from '../../constants';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -12,12 +13,6 @@ export class UserService {
     readonly userChanged$: Observable<User> = this.userChangedSource.asObservable();
 
     private currentUser: User | null = null;
-
-    private readonly isLoggedInSource: Subject<boolean> = new Subject<boolean>();
-
-    readonly isLoggedIn$: Observable<boolean> = this.isLoggedInSource.asObservable();
-
-    isLoggedIn: boolean = false;
 
     constructor(private readonly httpClient: HttpClient) {
     }
@@ -46,18 +41,29 @@ export class UserService {
             );
     }
 
+    isLoggedIn(): boolean {
+        return moment().isBefore(this.getExpiration());
+    }
+
     logOut(): void {
         this.currentUser = null;
-        this.isLoggedIn = false;
-        localStorage.removeItem(USER_EMAIL_LOCAL_STORAGE_KEY);
-        this.isLoggedInSource.next(false);
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('expires_at');
+    }
+
+    getExpiration() {
+        const expiration: string = localStorage.getItem('expires_at') as string;
+        const expiresAt: string = JSON.parse(expiration);
+        return moment(expiresAt);
     }
 
     private saveCurrentUser(user: User): void {
+        console.log(user);
         this.currentUser = user;
-        this.isLoggedIn = true;
-        localStorage.setItem(USER_EMAIL_LOCAL_STORAGE_KEY, user.email);
+        const expiresAt = moment().add(user.token.expiresIn, 'second');
+
+        localStorage.setItem('id_token', user.token.idToken);
+        localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
         this.userChangedSource.next(user);
-        this.isLoggedInSource.next(true);
     }
 }

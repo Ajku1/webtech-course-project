@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginFormControlName } from './models/login-form-control-name.enum';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Route } from '../../route.enum';
 
 @Component({
@@ -33,7 +33,8 @@ export class LoginComponent {
     onFormSubmit(): void {
         const email: string = this.loginForm.get(LoginFormControlName.Email)?.value;
         const password: string = this.loginForm.get(LoginFormControlName.Password)?.value;
-        this.userService.login(email, password).subscribe(() => {
+        this.userService.login(email, password).subscribe((s) => {
+            console.log(s);
             this.router.navigate([Route.ChatsPage]);
         }, (err) => {
             this.loginFailed = true;
