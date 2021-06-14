@@ -4,6 +4,9 @@ import { Route } from "../route.enum";
 import { Observable } from 'rxjs';
 // import { ChatroomService } from '../chats-page/chats-page.component.spec';
 import { HttpClient } from '@angular/common/http';
+import { ChatsPageService } from './chats-page.service';
+import { Chatroom } from './chatroom.interface';
+import { User } from './user.interface';
 
 
 @Component({
@@ -14,21 +17,31 @@ import { HttpClient } from '@angular/common/http';
 export class ChatsPageComponent implements OnInit {
     chats: string[] = ['Chat1', 'Chat2', 'Chat3', 'Chat4', 'Chat5'];
     //private readonly chatroomService: ChatroomService,
-    constructor(private router: Router,
-        private readonly httpClient: HttpClient) {
-        console.log(this.router.url)
+
+    chatrooms: Chatroom[] = [];
+    users: User[] = [];
+    
+    constructor( private router: Router,
+        private readonly httpClient: HttpClient, private readonly chatspageservice: ChatsPageService) {
+        console.log(this.router.url);
     }
 
     getAllChatsWithMember() {
-        let promise = new Promise<void>((resolve, reject) => {
-            this.httpClient.get('/api/chatroom')
-            .toPromise()
-            .then(
-                res => {
-                    console.log(res.toString());
-                }
-            );
+        this.chatspageservice.getUsers().subscribe((user: User) => {
+            this.users = [...this.users, user];
+
+        });        
+    }
+
+    getChats() {
+
+        let a = this.chatrooms[0].name;
+        // console.log(this.chatrooms[0]);
+        // console.log(this.chatrooms.find(i => i.name == "Chat 6"));
+        this.chatrooms.forEach(element => {
+            console.log(element);
         });
+        // console.log((this.chatrooms[0]).name);
     }
 
     getElementByCriteria() {
@@ -56,11 +69,12 @@ export class ChatsPageComponent implements OnInit {
     }
 
     arrayElementOnIndex(n:number): string {
-        return this.chats[n];
+        return this.chatrooms[n].name;
     }
 
-    arrayChatCount(): number {
-        return this.chats.length;
+    arrayChatCount(): Array<number> {
+
+        return Array(this.chatrooms.length);
     }
 
     onLogout() {
@@ -79,11 +93,15 @@ export class ChatsPageComponent implements OnInit {
         this.router.navigate([Route.CreateChatroomModal]);
     }
 
-    ngOnInit() {
+    async ngOnInit() {
+        await this.chatspageservice.getChatRooms().subscribe(chatroom => {
+            this.chatrooms = Array.of(chatroom);
+        });
     }
-    //function to return list of numbers from 0 to n-1
+
+    // function to return list of numbers from 0 to n-1
     numSequence(n: number): Array<number> {
-    return Array(n);
+        return Array(n);
     }
 
 }

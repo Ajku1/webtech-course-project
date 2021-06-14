@@ -33,11 +33,12 @@
         </textarea> -->
         <input type="text" id="search" placeholder="search" rows="1"/>
         <button id='search_button' (click)="getElementByCriteria()">Search</button>
+        <button (click)="getChats()">Test</button>
       </div>
 
       <!-- choose chat room menu -->
       <div class="vertical-menu" id="hi" onload="ngOnInit()">
-        <button *ngFor="let x of numSequence(arrayChatCount()); let i = index" (click)="onChat()" class="chat_button" id="chat_{{i}}">{{arrayElementOnIndex(i)}}</button>
+        <button *ngFor="let x of arrayChatCount(); let i = index" (click)="onChat()" class="chat_button" id="chat_{{i}}">{{arrayElementOnIndex(i)}}</button>
 
       </div>
 

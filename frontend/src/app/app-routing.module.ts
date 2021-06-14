@@ -21,22 +21,22 @@ const routes: Routes = [
     {
         path: Route.ChatsPage,
         component: ChatsPageComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
     },
     {
         path: Route.CreateChatroomModal,
         component: CreateChatroomModalComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
     },
     {
         path: Route.Home,
         component: HomeComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
     },
     {
         path: Route.Chatroom,
         component: ChatroomComponent,
-        canActivate: [AuthGuardService]
+        // canActivate: [AuthGuardService]
     },
     {
         path: '**',
