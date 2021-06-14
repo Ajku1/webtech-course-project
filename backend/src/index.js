@@ -6,7 +6,8 @@ import './config/mongo.js';
 import userRouter from './routes/user.js';
 import chatroomRouter from './routes/chatroom.js';
 import messageRouter from './routes/message.js';
-
+import { Server } from 'socket.io';
+ 
 const port = process.env.PORT || '3000';
 const app = express();
 app.set('port', port);
@@ -29,7 +30,15 @@ app.use('*', (req, res) => {
 });
 
 const server = http.createServer(app);
+
+const io = new Server(server);
+io.on("connection", socket =>{
+    console.log("conection");
+});
+
+
 server.listen(port);
 server.on('listening', () => {
     console.log(`Listening on port:: http://localhost:${port}/`);
 });
+
