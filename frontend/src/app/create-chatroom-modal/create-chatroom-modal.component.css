@@ -9,7 +9,7 @@ padding: 0;
 margin: 0;
 box-sizing: border-box;
 }
-  /*modal style*/
+
 .wrap-modal { 
   position: fixed;
   top: 50%;
@@ -62,7 +62,6 @@ button.prev-btn {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /*align-items: center;*/
   margin-top: 20px;
 }
 .modal-footer {
@@ -84,7 +83,6 @@ button.prev-btn {
   height: 100px;
 }
 
-  /*add member content style*/
 .username { 
   padding: 6px;
   color: #6d7390;
@@ -132,7 +130,6 @@ ul {
   margin-right: 5px;
 }
   
-  /*chatroom description style*/
 textarea {
   padding: 8px 8px;
   box-sizing: border-box;
@@ -152,7 +149,6 @@ textarea {
   font-family: 'Open Sans Condensed', sans-serif;
 }
     
-/*steps titles style*/
 .modal-title { 
   font-size: 35px;
   color: rgb(18 84 148);
@@ -203,4 +199,32 @@ textarea {
 
 li {
   margin-top: 3px;
+}
+
+.empty-area-info {
+  width: 100%;
+  height: 70px;
+  overflow-y: scroll;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.member-info-data {
+  display: inline-block;
+  padding: 3px;
+  color: #84879b;
+  border: 2px solid rgb(186 201 222);
+  border-radius: 5px;
+  margin-bottom: 2px;
+  margin-right: 5px;
+  background-color: #f8f8f8;
+  font-size: 14px;
+}
+
+.delete-member-info-btn {
+  background: none;
+  border: none;
+  color: rgb(17 67 115);
+  font-weight: 800;
+  margin-left: 3px;
 }

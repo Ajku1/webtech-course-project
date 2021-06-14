@@ -45,18 +45,18 @@
       </section>
       <section class="modal-body">
         <div class="info-part" id="base-info-inline">
-         <label class="info-description" for="room-info">Room owner:</label> 
-         <label class="info-data" for="room-info">Username</label>
-        </div> 
-        <div class="info-part" id="base-info-inline">
          <label class="info-description" for="room-info">Room name:</label> 
          <label class="info-data" for="room-info">{{chatroomName}}</label>
         </div>
         <div class="info-part">
          <label class="info-description" for="room-info">Members:</label> 
-         <ul class="members-inline" *ngFor="let member of members">
-          <li class="info-data">{{member.name}}</li>                         
-         </ul>
+          <div class="empty-area-info">
+            <ul class="members-inline" *ngFor="let member of members">
+              <li class="member-info-data">{{member.name}}
+                <button type="button" class="delete-member-info-btn" (click)="onDeleteMember(member)">X</button>
+              </li>                         
+            </ul>
+          </div>  
         </div>
         <div class="info-part">
          <label class="info-description" for="room-info">Description:</label>
