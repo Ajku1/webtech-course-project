@@ -1,5 +1,6 @@
 export interface User {
     name: string;
     email: string;
-    token: any;
+    token: string;
+    expiresIn: number;
 }

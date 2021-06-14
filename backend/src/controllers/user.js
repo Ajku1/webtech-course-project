@@ -1,7 +1,10 @@
 import * as bcrypt from 'bcrypt';
-import * as jwt from 'jsonwebtoken';
+import jsonwebtoken from 'jsonwebtoken';
 import User from '../models/user.js';
 import { GET_USERS_FAILED, INVALID_CREDENTIALS, REGISTER_FAILED } from '../messages.js';
+import { RSA_PRIVATE_KEY } from '../middleware/auth.js';
+
+const jwt = jsonwebtoken;
 
 export default {
   getUsers: (req, res) => {
@@ -23,10 +26,16 @@ export default {
         });
         user.save().then(
             (createdUser) => {
-                res.status(200).json({ name: createdUser.name, email: createdUser.email });
+              const expiryTimeInSeconds = 60 * 60;
+              const jwtBearerToken = jwt.sign({ email: user.email }, RSA_PRIVATE_KEY, { expiresIn: expiryTimeInSeconds });
+              res.status(200).json({
+                name: createdUser.name,
+                email: createdUser.email,
+                token: jwtBearerToken,
+                expiresIn: expiryTimeInSeconds
+              });
             }
             ).catch((error) => {
-                console.log(error);
                 res.status(500).json({ result: false, message: REGISTER_FAILED, error });
             });
     });
@@ -34,20 +43,22 @@ export default {
   loginUser: async (req, res) => {
       const user = await User.findOne({ email: req.body.email }).exec();
       if (!user) {
-          res.status(500).json({ message: INVALID_CREDENTIALS });
+          res.status(401).json({ message: INVALID_CREDENTIALS });
           return;
       }
       bcrypt.compare(req.body.password, user.password, (err, passwordMatches) => {
-          const jwtBearerToken = jwt.sign({}, RSA_PRIVATE_KEY, {
-            algorithm: 'RS256',
-            expiresIn: 120,
-            subject: user.email
-          });
-          if (passwordMatches) {
-              res.status(200).json({ name: user.name, email: user.email, token: jwtBearerToken });
-          } else {
-              res.status(401).json({ message: INVALID_CREDENTIALS });
-          }
+        const expiryTimeInSeconds = 60 * 60;
+        const jwtBearerToken = jwt.sign({ email: user.email }, RSA_PRIVATE_KEY, { expiresIn: expiryTimeInSeconds });
+        if (passwordMatches) {
+            res.status(200).json({
+              name: user.name,
+              email: user.email,
+              token: jwtBearerToken,
+              expiresIn: expiryTimeInSeconds
+            });
+        } else {
+            res.status(401).json({ message: INVALID_CREDENTIALS });
+        }
       });
   }
 };

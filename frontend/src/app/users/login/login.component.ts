@@ -33,8 +33,7 @@ export class LoginComponent {
     onFormSubmit(): void {
         const email: string = this.loginForm.get(LoginFormControlName.Email)?.value;
         const password: string = this.loginForm.get(LoginFormControlName.Password)?.value;
-        this.userService.login(email, password).subscribe((s) => {
-            console.log(s);
+        this.userService.login(email, password).subscribe(() => {
             this.router.navigate([Route.ChatsPage]);
         }, (err) => {
             this.loginFailed = true;

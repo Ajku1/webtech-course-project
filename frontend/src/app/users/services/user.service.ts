@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { User } from '../user.interface';
-import { USER_EMAIL_LOCAL_STORAGE_KEY } from '../../constants';
+import { EXPIRES_AT_LOCAL_STORAGE_KEY, TOKEN_LOCAL_STORAGE_KEY } from '../../constants';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -42,28 +42,25 @@ export class UserService {
     }
 
     isLoggedIn(): boolean {
-        return moment().isBefore(this.getExpiration());
+        const expiration: string | null = localStorage.getItem(EXPIRES_AT_LOCAL_STORAGE_KEY);
+        if (!expiration) {
+            return false;
+        }
+        const expiresAt: moment.Moment = moment(JSON.parse(expiration));
+        return moment().isBefore(expiresAt);
     }
 
     logOut(): void {
         this.currentUser = null;
-        localStorage.removeItem('id_token');
-        localStorage.removeItem('expires_at');
-    }
-
-    getExpiration() {
-        const expiration: string = localStorage.getItem('expires_at') as string;
-        const expiresAt: string = JSON.parse(expiration);
-        return moment(expiresAt);
+        localStorage.removeItem(TOKEN_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(EXPIRES_AT_LOCAL_STORAGE_KEY);
     }
 
     private saveCurrentUser(user: User): void {
-        console.log(user);
         this.currentUser = user;
-        const expiresAt = moment().add(user.token.expiresIn, 'second');
-
-        localStorage.setItem('id_token', user.token.idToken);
-        localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+        const expiresAt: moment.Moment = moment().add(user.expiresIn, 'second');
+        localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, user.token);
+        localStorage.setItem(EXPIRES_AT_LOCAL_STORAGE_KEY, JSON.stringify(expiresAt.valueOf()));
         this.userChangedSource.next(user);
     }
 }
