@@ -1,25 +1,43 @@
-<body id="body">
-  <div class="container">
-    <div class="jumbotron">
-      <h1 id="chatsHeader">Chats</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chats</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="chats-page.component.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body id="body">
+    <div class="container">
+      <!-- header -->
+      <div class="jumbotron">
+        <h1 id="chatsHeader">Chats</h1>
+      </div>
+
+      <!-- log out button  -->
+      <!-- <div>
+        <button (click)="onLogout()" id="logout">Log out</button>
+      </div> -->
+
+      <!-- search -->
+      <div>
+        <input type="text" id="search" placeholder="search" rows="1"/>
+        <button id='search_button' (click)="getElementByCriteria()">Search</button>
+      </div>
+
+      <!-- choose chat room menu -->
+      <div class="vertical-menu" id="hi" onload="ngOnInit()">
+        <button *ngFor="let x of arrayChatCount(); let i = index"  class="chat_button" id="chat_{{i}}" (click)="onChat('chat_' + i)">{{arrayElementOnIndex(i)}}</button>
+      </div>
+
+      <!-- Create chat room button -->
+      <div>
+        <button (click)="onCreate()" id="addChat">Create</button>
+      </div>
+
     </div>
-    <div>
-      <input id="search" placeholder="Search chats...">
-    </div>
-    <div class="vertical-menu">
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 1</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 2</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 3</a>
-      <a href="#" class="active"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 4</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 5</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 6</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 7</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 8</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 9</a>
-      <a href="#"><img src="assets/images/chatroom-logo.png" alt="Chatroom" id="chatroom-img">Chat 10</a>
-    </div>
-    <div>
-      <button id="addChat" (click)="onCreate()">Create chatroom</button>
-    </div>
-  </div>
-</body>
+  </body>
+</html>
