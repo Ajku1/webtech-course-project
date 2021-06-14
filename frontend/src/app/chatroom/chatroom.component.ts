@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChatroomService } from '../chatroom/chatroom.service';
 import { Chatroom } from '../create-chatroom-modal/chatroom.interface';
-import { MessageService } from '../chatroom/message.service';
 import { Message } from '../chatroom/message.interface';
 
 @Component({
@@ -12,17 +11,17 @@ import { Message } from '../chatroom/message.interface';
 export class ChatroomComponent implements OnInit {
     private chatroom!: Chatroom;
 
-    newMessage: string = "";
+    newMessage: string = '';
 
     messageList: Message[] = [];
 
-    constructor(private readonly messageService: MessageService,
-                private readonly chatroomService: ChatroomService) {
+    constructor(private readonly chatroomService: ChatroomService) {
     }
 
-
     ngOnInit(): void {
-
+      this.chatroomService.getNewMessage().subscribe((message: Message) => {
+        this.messageList.push(message);
+      })
     }
 
     ngOnDestroy(): void {
@@ -36,30 +35,20 @@ export class ChatroomComponent implements OnInit {
 
     set Chatroom(chatroom: any) {
         this.chatroom = chatroom;
-        //this.chatService.setChatId(chatroom.id)
-        //this.loadMessages();
+        this.loadMessages();
     }
 
     loadMessages() {
-        this.messageService.load(this.chatroom.id)
-            .subscribe(
-                result => {
-                    if (result.result) {
-                        this.messageList = result.message_list;
-                    } else {
-                        console.log("No message to send.");
-                    }
-                },
-                () => {
-                }
-            );
+      this.chatroomService.load().subscribe((message: Message) => {
+            this.messageList = [...this.messageList, message];
+      });
     }
 
     sendMessage() {
-        if (this.newMessage === "") {
+        if (this.newMessage === '') {
             return;
         }
-        this.chatroomService.sendMessage(this.newMessage, this.chatroom.id);
-        this.newMessage = "";
+        this.chatroomService.sendMessage(this.newMessage);
+        this.newMessage = '';
     }
 }

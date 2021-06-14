@@ -32,10 +32,14 @@ app.use('*', (req, res) => {
 const server = http.createServer(app);
 
 const io = new Server(server);
-io.on("connection", socket =>{
-    console.log("conection");
+io.on('connection', (socket) =>{
+    socket.on('message', (message) => {
+        io.emit('message', message);
+    });
+    socket.on('disconnect', () => {
+        console.log('disconnected');
+    });
 });
-
 
 server.listen(port);
 server.on('listening', () => {

@@ -1,8 +1,4 @@
-<head>
-	<link rel="stylesheet" href="chatroom.component.css">
-  </head>
-  
-  <div id="container">
+<div id="container">
 	  <aside>
 		  <header>
 			  <input type="text" placeholder="search">
@@ -10,81 +6,91 @@
 	  </aside>
 	  <main>
 		  <header>
-			  <div>
-				  <h2>Chat with the team</h2>
-			  </div>
+			  <div><h2>Chat with the team</h2></div>
 		  </header>
+		  <!--
+		  <ul id="chat" *ngFor="let message of messageList">
+			  <li class="you">
+				  <div class="entete">
+					  <span class="status green"></span>
+					  <h2>{{message.sender}}</h2>
+					  <h3>{{message.sendDate}}</h3>
+				  </div>
+				  <div class="triangle"></div>
+				  	<div class="message">{{message.text}}</div>
+			  </li>
+		  </ul>-->
 		  <ul id="chat">
-			  <li class="you">
-				  <div class="entete">
-					  <span class="status green"></span>
-					  <h2>Gosho</h2>
-					  <h3>10:12AM, Today</h3>
-				  </div>
-				  <div class="triangle"></div>
-				  <div class="message">
-					  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				  </div>
-			  </li>
-			  <li class="me">
-				  <div class="entete">
-					  <h3>10:12AM, Today</h3>
-					  <h2>Pesho</h2>
-					  <span class="status blue"></span>
-				  </div>
-				  <div class="triangle"></div>
-				  <div class="message">
-					  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				  </div>
-			  </li>
-			  <li class="me">
-				  <div class="entete">
-					  <h3>10:12AM, Today</h3>
-					  <h2>Pesho</h2>
-					  <span class="status blue"></span>
-				  </div>
-				  <div class="triangle"></div>
-				  <div class="message">
-					  OK
-				  </div>
-			  </li>
-			  <li class="you">
-				  <div class="entete">
-					  <span class="status green"></span>
-					  <h2>Gosho</h2>
-					  <h3>10:12AM, Today</h3>
-				  </div>
-				  <div class="triangle"></div>
-				  <div class="message">
-					  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				  </div>
-			  </li>
-			  <li class="me">
-				  <div class="entete">
-					  <h3>10:12AM, Today</h3>
-					  <h2>Pesho</h2>
-					  <span class="status blue"></span>
-				  </div>
-				  <div class="triangle"></div>
-				  <div class="message">
-					  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-				  </div>
-			  </li>
-			  <li class="me">
-				  <div class="entete">
-					  <h3>10:12AM, Today</h3>
-					  <h2>Pesho</h2>
-					  <span class="status blue"></span>
-				  </div>
-				  <div class="triangle"></div>
-				  <div class="message">
-					  OK
-				  </div>
-			  </li>
-		  </ul>
+			<li class="you">
+				<div class="entete">
+					<span class="status green"></span>
+					<h2>Gosho</h2>
+					<h3>10:12AM, Today</h3>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+				</div>
+			</li>
+			<li class="me">
+				<div class="entete">
+					<h3>10:12AM, Today</h3>
+					<h2>Pesho</h2>
+					<span class="status blue"></span>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+				</div>
+			</li>
+			<li class="me">
+				<div class="entete">
+					<h3>10:12AM, Today</h3>
+					<h2>Pesho</h2>
+					<span class="status blue"></span>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					OK
+				</div>
+			</li>
+			<li class="you">
+				<div class="entete">
+					<span class="status green"></span>
+					<h2>Gosho</h2>
+					<h3>10:12AM, Today</h3>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+				</div>
+			</li>
+			<li class="me">
+				<div class="entete">
+					<h3>10:12AM, Today</h3>
+					<h2>Pesho</h2>
+					<span class="status blue"></span>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+				</div>
+			</li>
+			<li class="me">
+				<div class="entete">
+					<h3>10:12AM, Today</h3>
+					<h2>Pesho</h2>
+					<span class="status blue"></span>
+				</div>
+				<div class="triangle"></div>
+				<div class="message">
+					OK
+				</div>
+			</li>
+		</ul>
 		  <footer>
-			  <textarea placeholder="Type your message"></textarea>
-			  <a href="#">Send</a>
+			  <textarea [(ngModel)]="newMessage" placeholder="Type your message"></textarea>
+			  <input (click)="sendMessage()" name="submitmsg" type="submit" id="submitmsg" value="Send" />
 		  </footer>
 	  </main>
   </div>

@@ -3,14 +3,17 @@ import Message from '../models/message.js';
 export default {
   createMessage: async (req) => {
     const message = new Message({
-        chatroom: req.body.chatroom,
         text: req.body.text,
         sender: req.body.sender,
         sendDate: Date.now()
     });
     message.save().then(
         (created) => {
-            io.emit('message', chatroom, created);
+            io.to(chatroomId).emit('message', {
+                text: created.text,
+                sender: created.sender,
+                sendDate: created.sendDate
+            });
         }
     ).catch(
         (error) => {
@@ -18,7 +21,7 @@ export default {
         }
     );
   },
-  getOrderedMessages: async (req, res) => {
-   
+  getOrderedMessages: (req, res) => {
+
   }
-};
+}

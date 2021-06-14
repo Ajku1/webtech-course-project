@@ -12,7 +12,6 @@ const chatroomSchema = new mongoose.Schema(
             required: true
         },
         members: [{
-            //type: String,
             type: mongoose.Schema.Types.ObjectId,
             ref: "User",
             require: true
@@ -21,7 +20,8 @@ const chatroomSchema = new mongoose.Schema(
             type: String
         },
         messages: [{
-            type: String
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Message'
         }]
     }
 );
