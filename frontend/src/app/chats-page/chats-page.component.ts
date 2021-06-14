@@ -1,13 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import { Route } from "../route.enum";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-// import { ChatroomService } from '../chats-page/chats-page.component.spec';
 import { HttpClient } from '@angular/common/http';
-import { ChatsPageService } from './chats-page.service';
-import { Chatroom } from './chatroom.interface';
-import { User } from './user.interface';
-
+import { Route } from '../route.enum';
+import { Chatroom } from '../create-chatroom-modal/chatroom.interface';
 
 @Component({
     selector: 'app-chats-page',
@@ -15,65 +11,49 @@ import { User } from './user.interface';
     styleUrls: ['./chats-page.component.css']
 })
 export class ChatsPageComponent implements OnInit {
-    chats: string[] = ['Chat1', 'Chat2', 'Chat3', 'Chat4', 'Chat5'];
-    //private readonly chatroomService: ChatroomService,
+    chatrooms!: Chatroom[];
 
-    chatrooms: Chatroom[] = [];
-    users: User[] = [];
-    
-    constructor( private router: Router,
-        private readonly httpClient: HttpClient, private readonly chatspageservice: ChatsPageService) {
+    constructor(private router: Router,
+                private readonly httpClient: HttpClient) {
         console.log(this.router.url);
+        this.getAllChatsWithMember();
     }
 
     getAllChatsWithMember() {
-        this.chatspageservice.getUsers().subscribe((user: User) => {
-            this.users = [...this.users, user];
-
-        });        
-    }
-
-    getChats() {
-
-        let a = this.chatrooms[0].name;
-        // console.log(this.chatrooms[0]);
-        // console.log(this.chatrooms.find(i => i.name == "Chat 6"));
-        this.chatrooms.forEach(element => {
-            console.log(element);
+        const chatroomsObservable = this.httpClient.get('/api/chatroom') as Observable<{ chatrooms: Chatroom[] }>;
+        chatroomsObservable.subscribe((res: { chatrooms: Chatroom[] }) => {
+            this.chatrooms = res.chatrooms;
+            console.log(this.chatrooms);
         });
-        // console.log((this.chatrooms[0]).name);
     }
 
     getElementByCriteria() {
-        var input = <HTMLInputElement>document.getElementById("search");
+        const input = <HTMLInputElement>document.getElementById('search');
 
-        for (let i = 0; i < this.chats.length; i++) {
-            var button = document.getElementById("chat_" + i);
+        for (let i = 0; i < this.chatrooms.length; i++) {
+            const button = document.getElementById(`chat_${i}`);
 
-            if(button != null) {
-                if(input.value == "") {
-                    button.style.visibility = "visible";
-                } else if (button?.textContent == input.value)
-                {
-                    button.style.visibility = "visible";
-                } 
-                else if(button?.textContent != input.value) {
-                    if(button?.textContent?.substring(0, input.value.length) == input.value) {
-                        button.style.visibility = "visible";
+            if (button != null) {
+                if (input.value == '') {
+                    button.style.visibility = 'visible';
+                } else if (button?.textContent == input.value) {
+                    button.style.visibility = 'visible';
+                } else if (button?.textContent != input.value) {
+                    if (button?.textContent?.substring(0, input.value.length) == input.value) {
+                        button.style.visibility = 'visible';
                     } else {
-                        button.style.visibility = "hidden";
+                        button.style.visibility = 'hidden';
                     }
                 }
             }
         }
     }
-
-    arrayElementOnIndex(n:number): string {
+    
+    arrayElementOnIndex(n: number): string {
         return this.chatrooms[n].name;
     }
 
     arrayChatCount(): Array<number> {
-
         return Array(this.chatrooms.length);
     }
 
@@ -81,27 +61,14 @@ export class ChatsPageComponent implements OnInit {
         this.router.navigate([Route.Home]);
     }
 
-    onClick() {
-        this.router.navigate([Route.Home]);
-    }
-
     onChat() {
         this.router.navigate([Route.Chatroom]);
     }
 
-    onCreate(){
+    onCreate() {
         this.router.navigate([Route.CreateChatroomModal]);
     }
 
-    async ngOnInit() {
-        await this.chatspageservice.getChatRooms().subscribe(chatroom => {
-            this.chatrooms = Array.of(chatroom);
-        });
+    ngOnInit() {
     }
-
-    // function to return list of numbers from 0 to n-1
-    numSequence(n: number): Array<number> {
-        return Array(n);
-    }
-
 }
