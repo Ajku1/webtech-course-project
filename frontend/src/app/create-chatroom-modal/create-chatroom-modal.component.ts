@@ -5,9 +5,9 @@ import { User } from './user.interface';
 import { Route } from '../route.enum';
 
 @Component({
-    selector: 'app-create-chatroom-modal',
-    templateUrl: './create-chatroom-modal.component.html',
-    styleUrls: ['./create-chatroom-modal.component.css']
+  selector: 'app-create-chatroom-modal',
+  templateUrl: './create-chatroom-modal.component.html',
+  styleUrls: ['./create-chatroom-modal.component.css']
 })
 export class CreateChatroomModalComponent implements OnInit {
     searchText = '';
@@ -43,6 +43,12 @@ export class CreateChatroomModalComponent implements OnInit {
 
     onSelectUser(user: User): void {
         this.members = [...this.members, user];
+    }
+
+    onDeleteMember(member: User) {
+      this.members.forEach((m, index)=>{
+        if(m.email==member.email) this.members.splice(index, 1);
+      });
     }
 
     onCreateChatroom(): void {
