@@ -8,7 +8,7 @@ import { Route } from '../../route.enum';
 @Component({
     selector: 'chat-register',
     templateUrl: './register.component.html',
-    styleUrls: ['./register.component.css']
+    styleUrls: ['../user.component.css']
 })
 export class RegisterComponent {
     readonly submitButtonText: string = 'Register';

@@ -1,13 +1,13 @@
-<form class="register-form" [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onFormSubmit()">
-    <label class="register-form-element">
+<form class="form" [formGroup]="registerForm" (ngSubmit)="registerForm.valid && onFormSubmit()">
+    <label class="form-element">
         Email:
         <input type="email" [formControlName]="registerFormControlNames.Email">
     </label>
-    <label class="register-form-element">
+    <label class="form-element">
         Name:
         <input type="text" [formControlName]="registerFormControlNames.Name">
     </label>
-    <label class="register-form-element">
+    <label class="form-element">
         Password:
         <input type="password" [formControlName]="registerFormControlNames.Password">
     </label>

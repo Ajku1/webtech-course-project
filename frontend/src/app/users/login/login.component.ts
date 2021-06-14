@@ -8,7 +8,7 @@ import { Route } from '../../route.enum';
 @Component({
     selector: 'chat-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['../user.component.css']
 })
 export class LoginComponent {
     readonly submitButtonText: string = 'Login';

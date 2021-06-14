@@ -1,9 +1,9 @@
-<form class="login-form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onFormSubmit()">
-    <label class="login-form-element">
+<form class="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onFormSubmit()">
+    <label class="form-element">
         Email:
         <input type="email" [formControlName]="loginFormControlNames.Email">
     </label>
-    <label class="login-form-element">
+    <label class="form-element">
         Password:
         <input type="password" [formControlName]="loginFormControlNames.Password">
     </label>

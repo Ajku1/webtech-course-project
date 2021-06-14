@@ -53,8 +53,8 @@ export class ChatsPageComponent {
         return this.chatrooms[n].name;
     }
 
-    arrayChatCount(): Array<number> {
-        return Array(this.chatrooms.length);
+    arrayChatCount(): number[] {
+        return this.chatrooms ? Array(this.chatrooms.length) : [];
     }
 
     onChat(id: string): void {
