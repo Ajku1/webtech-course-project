@@ -5,7 +5,6 @@ import { User } from './user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class CreateChatroomService {
-
     constructor(private readonly httpClient: HttpClient) {
     }
 
@@ -14,15 +13,13 @@ export class CreateChatroomService {
     }
 
     createChatroom(id: string, name: string, members: User[], description: string) {
-        this.httpClient.post<any>('/api/chatroom', 
+        this.httpClient.post<any>('/api/chatroom',
         {
-            id: id,
-            name: name,  
-            members: members,
-            description: description,
-            messages: [] 
-        }).subscribe((room)=>{
-            return room;
-        });
+            id,
+            name,
+            members,
+            description,
+            messages: []
+        }).subscribe((room) => room);
     }
 }
