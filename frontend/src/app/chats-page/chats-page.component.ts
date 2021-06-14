@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Route } from '../route.enum';
-import { Chatroom } from '../create-chatroom-modal/chatroom.interface';
+import { Chatroom } from './chatroom.interface';
 
 @Component({
     selector: 'app-chats-page',
@@ -12,6 +12,7 @@ import { Chatroom } from '../create-chatroom-modal/chatroom.interface';
 })
 export class ChatsPageComponent implements OnInit {
     chatrooms!: Chatroom[];
+    chatroomId!: String;
 
     constructor(private router: Router,
                 private readonly httpClient: HttpClient) {
@@ -48,7 +49,7 @@ export class ChatsPageComponent implements OnInit {
             }
         }
     }
-    
+
     arrayElementOnIndex(n: number): string {
         return this.chatrooms[n].name;
     }
@@ -61,7 +62,14 @@ export class ChatsPageComponent implements OnInit {
         this.router.navigate([Route.Home]);
     }
 
-    onChat() {
+    onChat(id: string) {
+        for (let index = 0; index < this.chatrooms.length; index++) {
+            if(this.chatrooms[index].name == document.getElementById(id)?.innerText)
+            {
+                this.chatroomId = this.chatrooms[index]._id;
+            }
+        }
+        
         this.router.navigate([Route.Chatroom]);
     }
 

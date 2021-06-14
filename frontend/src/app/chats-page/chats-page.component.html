@@ -30,8 +30,7 @@
 
       <!-- choose chat room menu -->
       <div class="vertical-menu" id="hi" onload="ngOnInit()">
-        <button *ngFor="let x of arrayChatCount(); let i = index" (click)="onChat()" class="chat_button" id="chat_{{i}}">{{arrayElementOnIndex(i)}}</button>
-
+        <button *ngFor="let x of arrayChatCount(); let i = index"  class="chat_button" id="chat_{{i}}" (click)="onChat('chat_' + i)">{{arrayElementOnIndex(i)}}</button>
       </div>
 
       <!-- Create chat room button -->
