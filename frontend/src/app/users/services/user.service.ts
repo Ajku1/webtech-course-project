@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { User } from '../user.interface';
-import { EXPIRES_AT_LOCAL_STORAGE_KEY, TOKEN_LOCAL_STORAGE_KEY } from '../../constants';
+import { EXPIRES_AT_LOCAL_STORAGE_KEY, TOKEN_LOCAL_STORAGE_KEY, USER_NAME_LOCAL_STORAGE_KEY } from '../../constants';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-    private readonly userChangedSource: Subject<User> = new Subject<User>();
+    private readonly userChangedSource: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-    readonly userChanged$: Observable<User> = this.userChangedSource.asObservable();
-
-    private currentUser: User | null = null;
+    readonly userChanged$: Observable<boolean> = this.userChangedSource.asObservable();
 
     constructor(private readonly httpClient: HttpClient) {
     }
@@ -51,16 +49,17 @@ export class UserService {
     }
 
     logOut(): void {
-        this.currentUser = null;
-        localStorage.removeItem(TOKEN_LOCAL_STORAGE_KEY);
         localStorage.removeItem(EXPIRES_AT_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(TOKEN_LOCAL_STORAGE_KEY);
+        localStorage.removeItem(USER_NAME_LOCAL_STORAGE_KEY);
+        this.userChangedSource.next(false);
     }
 
     private saveCurrentUser(user: User): void {
-        this.currentUser = user;
         const expiresAt: moment.Moment = moment().add(user.expiresIn, 'second');
-        localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, user.token);
         localStorage.setItem(EXPIRES_AT_LOCAL_STORAGE_KEY, JSON.stringify(expiresAt.valueOf()));
-        this.userChangedSource.next(user);
+        localStorage.setItem(TOKEN_LOCAL_STORAGE_KEY, user.token);
+        localStorage.setItem(USER_NAME_LOCAL_STORAGE_KEY, user.name);
+        this.userChangedSource.next(true);
     }
 }
