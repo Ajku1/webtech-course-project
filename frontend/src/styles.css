@@ -1,6 +1,6 @@
 html, body, chat-root {
-    height: 95vh;
-    width: 95vw;
+    /* height: 95vh;
+    width: 95vw; */
     font-family: 'Open Sans Condensed', sans-serif;
     background: rgb(182 207 243);
 }

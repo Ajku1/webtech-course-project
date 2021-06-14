@@ -1,7 +1,7 @@
 import Chatroom from '../models/chatroom.js';
 
 export default {
-  createChatroom: (req, res) => {  
+  createChatroom: (req, res) => {
     const chatroom = new Chatroom({
         name: req.body.name,
         members: req.body.members,
@@ -26,7 +26,7 @@ export default {
         if (error) {
             res.status(500).json({ result: false, message: 'Unable to get created chatrooms', error });
         }
-        res.status(200).json({ result: true, chatrooms: createdChatrooms });
+        res.status(200).json({ chatrooms: createdChatrooms });
     });
   }
 };
