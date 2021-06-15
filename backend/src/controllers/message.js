@@ -17,5 +17,8 @@ export default {
             return error;
         }
     );
+  },
+  getOrderedMessages: async () => {
+
   }
 };
