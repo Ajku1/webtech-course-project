@@ -5,6 +5,7 @@ import { take, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 import { User } from '../user.interface';
 import { EXPIRES_AT_LOCAL_STORAGE_KEY, TOKEN_LOCAL_STORAGE_KEY, USER_NAME_LOCAL_STORAGE_KEY } from '../../constants';
+import { FormControl } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -53,6 +54,16 @@ export class UserService {
         localStorage.removeItem(TOKEN_LOCAL_STORAGE_KEY);
         localStorage.removeItem(USER_NAME_LOCAL_STORAGE_KEY);
         this.userChangedSource.next(false);
+    }
+
+    getFormControlErrorMessage(formControl: FormControl): string {
+        if (formControl.hasError('required')) {
+            return 'You must enter a value';
+        } else if (formControl.hasError('minlength')) {
+            return 'Field must contain at least 8 symbols';
+        }
+
+        return '';
     }
 
     private saveCurrentUser(user: User): void {

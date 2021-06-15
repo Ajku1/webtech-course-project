@@ -1,12 +1,13 @@
 <form class="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onFormSubmit()">
-    <label class="form-element">
-        Email:
-        <input type="email" [formControlName]="loginFormControlNames.Email">
-    </label>
-    <label class="form-element">
-        Password:
-        <input type="password" [formControlName]="loginFormControlNames.Password">
-    </label>
+    <mat-form-field appearance="fill">
+        <input matInput type="email" placeholder="Email" [formControl]="emailFormControl">
+        <mat-error *ngIf="emailFormControl.invalid">{{ userService.getFormControlErrorMessage(emailFormControl) }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <input matInput type="email" placeholder="Password" [formControl]="passwordFormControl">
+        <mat-error *ngIf="passwordFormControl.invalid">{{ userService.getFormControlErrorMessage(passwordFormControl) }}</mat-error>
+    </mat-form-field>
     <span *ngIf="loginFailed">{{ errorMessage }}</span>
-    <button class="submit-button" type="submit" [disabled]="loginForm.invalid">{{ submitButtonText}}</button>
+    <button mat-button class="submit-button" type="submit" [disabled]="loginForm.invalid">{{ submitButtonText}}</button>
 </form>

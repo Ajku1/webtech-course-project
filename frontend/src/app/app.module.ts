@@ -14,6 +14,9 @@ import { CreateChatroomModalComponent } from './create-chatroom-modal/create-cha
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { AuthInterceptor } from './users/services/auth.interceptor';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -28,12 +31,15 @@ import { AuthInterceptor } from './users/services/auth.interceptor';
     ],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         AppRoutingModule,
         ReactiveFormsModule,
         FormsModule,
         Ng2SearchPipeModule,
         HttpClientModule,
-        MatButtonModule
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     providers: [
         {
