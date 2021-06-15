@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginFormControlName } from './models/login-form-control-name.enum';
 import { UserService } from '../services/user.service';
 import { Route } from '../../route.enum';
-import { RegisterFormControlName } from '../register/models/register-form-control-name.enum';
 
 @Component({
     selector: 'chat-login',

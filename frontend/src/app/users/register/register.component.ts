@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterFormControlName } from './models/register-form-control-name.enum';
 import { UserService } from '../services/user.service';

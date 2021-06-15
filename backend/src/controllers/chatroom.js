@@ -15,7 +15,7 @@ export default {
     ).catch(
         (error) => {
             console.log(error);
-            res.status(500).json({ result: false, message: 'Unable to create chatroom', error: error });
+            res.status(500).json({ result: false, message: 'Unable to create chatroom', error });
         }
     );
   },

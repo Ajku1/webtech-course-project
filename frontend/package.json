@@ -7,15 +7,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "eslint . --ext .ts",
-    "e2e": "ng e2e"
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ajku1/webtech-course-project.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ajku1/webtech-course-project/issues"

@@ -17,11 +17,6 @@
     align-items: flex-end;
 }
 
-.submit-button {
-    width: 5rem;
-    height: 1.5rem;
-}
-
 input {
     border: 2px solid rgb(65 129 218);
     padding: 8px;
