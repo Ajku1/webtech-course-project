@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../users/user.service';
+import { UserService } from '../users/services/user.service';
 import { Route } from '../route.enum';
-import { User } from '../users/user.interface';
-import { NO_USER_LOGGED_IN_MESSAGE } from '../constants';
+import { NO_USER_LOGGED_IN_MESSAGE, USER_NAME_LOCAL_STORAGE_KEY } from '../constants';
 
 @Component({
     selector: 'chat-header-bar',
@@ -18,17 +17,21 @@ export class HeaderBarComponent {
     constructor(private readonly userService: UserService,
                 private readonly router: Router) {
         userService.userChanged$
-            .subscribe((user: User) => {
-                this.headerMessage = `You are logged in as: ${ user.name }`;
-            });
-        userService.isLoggedIn$
-            .subscribe((isLoggedIn: boolean) => {
-                this.userLoggedIn = isLoggedIn;
+            .subscribe(() => {
+                const userName: string | null = localStorage.getItem(USER_NAME_LOCAL_STORAGE_KEY);
+                if (userName) {
+                    this.headerMessage = `Logged in as : ${ userName }`;
+                    this.userLoggedIn = true;
+                } else {
+                    this.headerMessage = NO_USER_LOGGED_IN_MESSAGE;
+                    this.userLoggedIn = false;
+                }
             });
     }
 
     onLogOutButtonClick(): void {
         this.headerMessage = NO_USER_LOGGED_IN_MESSAGE;
+        this.userLoggedIn = false;
         this.userService.logOut();
         this.router.navigate([Route.Home]);
     }

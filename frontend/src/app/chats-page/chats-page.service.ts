@@ -6,7 +6,6 @@ import { User } from './user.interface';
 
 @Injectable({ providedIn: 'root' })
 export class ChatsPageService {
-
     constructor(private readonly httpClient: HttpClient) {
     }
 
@@ -18,4 +17,3 @@ export class ChatsPageService {
         return this.httpClient.get<User>('/api/users');
     }
 }
-

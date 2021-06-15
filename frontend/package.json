@@ -7,15 +7,12 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
-    "lint": "eslint . --ext .ts",
-    "e2e": "ng e2e"
+    "lint": "eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ajku1/webtech-course-project.git"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ajku1/webtech-course-project/issues"
@@ -32,6 +29,7 @@
     "@angular/platform-browser": "~11.2.7",
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
+    "moment": "^2.29.1",
     "ng2-search-filter": "^0.5.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

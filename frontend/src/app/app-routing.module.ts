@@ -7,7 +7,7 @@ import { CreateChatroomModalComponent } from './create-chatroom-modal/create-cha
 import { Route } from './route.enum';
 import { ChatsPageComponent } from './chats-page/chats-page.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
-import { AuthGuardService } from './users/auth-guard.service';
+import { AuthGuardService } from './users/services/auth-guard.service';
 
 const routes: Routes = [
     {
@@ -21,22 +21,17 @@ const routes: Routes = [
     {
         path: Route.ChatsPage,
         component: ChatsPageComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
     },
     {
         path: Route.CreateChatroomModal,
         component: CreateChatroomModalComponent,
-        // canActivate: [AuthGuardService]
-    },
-    {
-        path: Route.Home,
-        component: HomeComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
     },
     {
         path: Route.Chatroom,
         component: ChatroomComponent,
-        // canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
     },
     {
         path: '**',
