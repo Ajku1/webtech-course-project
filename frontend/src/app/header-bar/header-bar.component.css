@@ -1,7 +1,12 @@
 :host {
     width: 100%;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 3rem 1rem 1rem 1rem;
+    border-bottom: 1px solid black;
+}
+
+.header-bar-element {
+    margin: 2rem;
 }

@@ -1,43 +1,54 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginFormControlName } from './models/login-form-control-name.enum';
-import { UserService } from '../user.service';
+import { UserService } from '../services/user.service';
 import { Route } from '../../route.enum';
 
 @Component({
     selector: 'chat-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['../user.component.css']
 })
 export class LoginComponent {
     readonly submitButtonText: string = 'Login';
 
-    readonly loginFormControlNames: typeof LoginFormControlName = LoginFormControlName;
-
     readonly loginForm: FormGroup;
+
+    readonly emailFormControl: FormControl;
+
+    readonly passwordFormControl: FormControl;
 
     loginFailed: boolean = false;
 
     errorMessage?: string;
 
     constructor(formBuilder: FormBuilder,
-                private readonly userService: UserService,
+                public readonly userService: UserService,
                 private readonly router: Router) {
         this.loginForm = formBuilder.group({
-            [LoginFormControlName.Email]: ['', Validators.required],
-            [LoginFormControlName.Password]: ['', Validators.required]
+            [LoginFormControlName.Email]: [null, [Validators.required, Validators.minLength(8)]],
+            [LoginFormControlName.Password]: [null, [Validators.required, Validators.minLength(8)]]
         });
+
+        this.emailFormControl = this.loginForm.get(LoginFormControlName.Email) as FormControl;
+        this.passwordFormControl = this.loginForm.get(LoginFormControlName.Password) as FormControl;
     }
 
     onFormSubmit(): void {
-        const email: string = this.loginForm.get(LoginFormControlName.Email)?.value;
-        const password: string = this.loginForm.get(LoginFormControlName.Password)?.value;
-        this.userService.login(email, password).subscribe(() => {
-            this.router.navigate([Route.ChatsPage]);
-        }, (err) => {
-            this.loginFailed = true;
-            this.errorMessage = err.error.message;
-        });
+        const email: string = this.emailFormControl.value;
+        const password: string = this.passwordFormControl.value;
+        this.userService.login(email, password)
+            .subscribe(() => {
+                this.router.navigate([Route.ChatsPage]);
+            }, (err) => {
+                this.loginFailed = true;
+                this.errorMessage = err.error.message;
+            });
     }
 }

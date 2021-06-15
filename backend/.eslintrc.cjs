@@ -12,9 +12,12 @@ module.exports = {
     },
     rules: {
         'arrow-body-style': 'off',
-        indent: 'off',
+        'indent': 'off',
         'import/extensions': 'off',
         'linebreak-style': 'off',
-        'comma-dangle': ['error', 'never']
+        'consistent-return': 'off',
+        'max-len': ['error', { 'code': 140 }],
+        'comma-dangle': ['error', 'never'],
+        'template-curly-spacing': ['error', 'always']
     }
 };

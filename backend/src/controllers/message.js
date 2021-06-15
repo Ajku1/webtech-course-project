@@ -9,8 +9,8 @@ export default {
         sendDate: Date.now()
     });
     message.save().then(
-        (created) => {
-            io.emit('message', chatroom, created);
+        () => {
+            // io.emit('message', chatroom, created);
         }
     ).catch(
         (error) => {
@@ -18,7 +18,7 @@ export default {
         }
     );
   },
-  getOrderedMessages: async (req, res) => {
-   
+  getOrderedMessages: async () => {
+
   }
 };
